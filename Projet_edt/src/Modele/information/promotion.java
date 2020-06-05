@@ -10,5 +10,33 @@ package Modele.information;
  * @author wass1
  */
 public class promotion {
+    private int id;
+    private String nom;
     
+    //constructeur
+    public promotion() {
+        id=0;
+        nom=null;
+    }
+    
+    public promotion(int id, String nom) {
+        this.id=id;
+        this.nom=nom;
+    }
+    
+    //getters
+    public int getId() {
+        return this.id;
+    }
+    public String getNom() {
+        return this.nom;
+    }
+    
+    //setters
+    public void setId(int id) {
+        this.id=id;
+    }
+    public void setNom(String nom) {
+        this.nom=nom;
+    }
 }

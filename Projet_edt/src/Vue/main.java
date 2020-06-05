@@ -18,8 +18,10 @@ public class main {
         // TODO code application logic here
         
         
-        FirstPage fe = new FirstPage();
-        fe.setVisible(true);
+        //FirstPage fe = new FirstPage();
+        //fe.setVisible(true);
+        Page p = new Page();
+         p.setVisible(true);
     }
     
 }

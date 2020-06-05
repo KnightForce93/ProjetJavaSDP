@@ -5,6 +5,7 @@
  */
 package Modele.DAO;
 import Modele.information.Salle;
+import java.sql.*;
 /**
  *
  * @author wass1
@@ -14,6 +15,20 @@ public class SalleDAO extends DAO<Salle>{
     super(conn);
   }
   public Salle find(int id){
+      Salle salle = new Salle();      
+       String requete;
+       ResultSet resultat;
       
+    try {
+        requete= "SELECT * FROM salle WHERE id = " + id;
+        resultat=this.connect.remplirChampsRequete(requete);
+         if(resultat.first()){
+            salle= new Salle(id,resultat.getString("nom"),resultat.getInt("capacite"),resultat.getInt("id_site"));
+         }
+        
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return salle; 
   }
 }

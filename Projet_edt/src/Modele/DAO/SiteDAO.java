@@ -5,6 +5,7 @@
  */
 package Modele.DAO;
 import Modele.information.Site;
+import java.sql.*;
 /**
  *
  * @author wass1
@@ -14,6 +15,20 @@ public class SiteDAO extends DAO<Site>{
     super(conn);
   }
   public Site find(int id){
+      Site site = new Site();      
+       String requete;
+       ResultSet resultat;
       
+    try {
+        requete= "SELECT * FROM site WHERE id = " + id;
+        resultat=this.connect.remplirChampsRequete(requete);
+         if(resultat.first()){
+            site = new Site(id,resultat.getString("nom"));
+         }
+        
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return site; 
   }
 }

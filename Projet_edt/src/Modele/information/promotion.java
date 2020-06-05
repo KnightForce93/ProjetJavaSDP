@@ -9,17 +9,17 @@ package Modele.information;
  *
  * @author wass1
  */
-public class promotion {
+public class Promotion {
     private int id;
     private String nom;
     
     //constructeur
-    public promotion() {
+    public Promotion() {
         id=0;
         nom=null;
     }
     
-    public promotion(int id, String nom) {
+    public Promotion(int id, String nom) {
         this.id=id;
         this.nom=nom;
     }

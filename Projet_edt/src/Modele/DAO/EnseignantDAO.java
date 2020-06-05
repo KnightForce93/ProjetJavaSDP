@@ -5,6 +5,7 @@
  */
 package Modele.DAO;
 import Modele.information.Enseignant;
+import java.sql.*;
 /**
  *
  * @author wass1
@@ -14,7 +15,22 @@ public class EnseignantDAO extends DAO<Enseignant>{
     super(conn);
   }
   public Enseignant find(int id){
+        Enseignant enseignant = new Enseignant();      
+       String requete;
+       ResultSet resultat;
       
+    try {
+        requete= "SELECT * FROM enseignant WHERE id = " + id;
+        resultat=this.connect.remplirChampsRequete(requete);
+         if(resultat.first()){
+            enseignant = new Enseignant(id,resultat.getInt("id_cours"));
+         }
+        
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return enseignant;
   }
-}
+  }
+
 

@@ -5,6 +5,7 @@
  */
 package Modele.DAO;
 import Modele.information.Seance;
+import java.sql.*;
 /**
  *
  * @author wass1
@@ -14,7 +15,21 @@ public class SeanceDAO extends DAO<Seance>{
     super(conn);
   }
   public Seance find(int id){
-      return false;
+      Seance seance = new Seance();      
+       String requete;
+       ResultSet resultat;
+      
+    try {
+        requete= "SELECT * FROM seance WHERE id = " + id;
+        resultat=this.connect.remplirChampsRequete(requete);
+         if(resultat.first()){
+            seance = new Seance(id,resultat.getInt("semaine"),resultat.getString("date"),resultat.getString("heure_debut"),resultat.getString("heure_fin"),resultat.getInt("etat"),resultat.getInt("id_cours"),resultat.getInt("id_type"));
+         }
+        
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return seance; 
   }
     public boolean create(Seance obj) {
     return false;

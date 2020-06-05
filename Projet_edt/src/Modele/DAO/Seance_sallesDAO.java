@@ -6,6 +6,7 @@
 package Modele.DAO;
 import Modele.information.Seance_salles;
 import Modele.information.Seance;
+import java.sql.*;
 /**
  *
  * @author wass1
@@ -15,13 +16,27 @@ public class Seance_sallesDAO extends DAO<Seance_salles>{
     super(conn);
   }
   public Seance_salles find(int id){
+      Seance_salles seance_salles = new Seance_salles();      
+       String requete;
+       ResultSet resultat;
       
+    try {
+        requete= "SELECT * FROM seance_salles WHERE id = " + id;
+        resultat=this.connect.remplirChampsRequete(requete);
+         if(resultat.first()){
+            seance_salles= new Seance_salles(id,resultat.getInt("id_salle"));
+         }
+        
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return seance_salles; 
   }
-    public boolean create(Seance obj) {
+    public boolean create(Seance_salles obj) {
     return false;
   }
    
-  public boolean update(Seance obj) {
+  public boolean update(Seance_salles obj) {
     return false;
   }
 }

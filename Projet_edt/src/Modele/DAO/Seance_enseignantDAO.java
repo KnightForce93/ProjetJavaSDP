@@ -5,7 +5,7 @@
  */
 package Modele.DAO;
 import Modele.information.Seance_enseignant;
-import Modele.information.Seance;
+import java.sql.*;
 /**
  *
  * @author wass1
@@ -15,13 +15,28 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
     super(conn);
   }
   public  Seance_enseignant find(int id){
+      Seance_enseignant seance_enseignant = new Seance_enseignant();      
+       String requete;
+       ResultSet resultat;
       
+    try {
+        requete= "SELECT * FROM seance_enseignant WHERE id = " + id;
+        resultat=this.connect.remplirChampsRequete(requete);
+         if(resultat.first()){
+            seance_enseignant= new Seance_enseignant(id,resultat.getInt("id_enseignant"));
+        
+    }
+    }catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return seance_enseignant; 
+  
   }
-    public boolean create(Seance obj) {
+    public boolean create(Seance_enseignant obj) {
     return false;
   }
    
-  public boolean update(Seance obj) {
+  public boolean update(Seance_enseignant obj) {
     return false;
   }
 }

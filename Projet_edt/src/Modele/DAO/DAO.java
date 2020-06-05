@@ -9,6 +9,12 @@ package Modele.DAO;
  *
  * @author wass1
  */
-public class DAO {
-    
+public abstract class DAO<T> {
+  protected Connexion connect = null;
+   
+  public DAO(Connexion conn){
+    this.connect = conn;
+  }
+  public abstract T find(int id);
 }
+

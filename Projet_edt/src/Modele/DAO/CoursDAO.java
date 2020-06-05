@@ -5,7 +5,6 @@
  */
 package Modele.DAO;
 import Modele.information.Cours;
-import java.util.ArrayList;
 import java.sql.*;
 /**
  *
@@ -19,7 +18,6 @@ public class CoursDAO extends DAO<Cours> {
        Cours cours = new Cours();      
        String requete;
        ResultSet resultat;
-       String nom;
       
     try {
         requete= "SELECT nom FROM cours WHERE id = " + id;

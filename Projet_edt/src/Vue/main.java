@@ -20,8 +20,10 @@ public class main {
         
         //FirstPage fe = new FirstPage();
         //fe.setVisible(true);
+       
         Page p = new Page();
-         p.setVisible(true);
+        p.setVisible(true);
+         
     }
     
 }

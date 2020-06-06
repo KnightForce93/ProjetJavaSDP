@@ -10,6 +10,9 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -19,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.event.MenuListener;
 
 /**
  *
@@ -30,13 +34,16 @@ public class TopBar extends JFrame{
     
     private static JButton btn1, btn2;
     
+    private JMenu recap1;
+    private JMenuItem recap, edt, r;
+    
      //Constructeur 
     public TopBar (JPanel contentPanel1, JPanel contentPanel2 )
     {
         p0 = new JPanel();
         p1 = new JPanel();
         
-        p0.setLayout(new GridLayout(1, 2));
+        p0.setLayout(new GridLayout(1, 1));
         
         p1.setLayout(new GridLayout(1, 3));
         
@@ -60,33 +67,88 @@ public class TopBar extends JFrame{
     {
         JMenuBar menuBar1 = new JMenuBar(); 
         
+        menuBar1.setLayout(new GridBagLayout());
         
+        GridBagConstraints gbc = new GridBagConstraints();
+        
+       
+        /*
         JMenu edt = new JMenu ("<html>"
              + "<div style=\"color: green; \">"
              + "Emploi du temps</div></html>");
-        
+        */
        
-       
-        JMenu recap = new JMenu ("<html>"
+            edt = new JMenuItem("<html>"
+             + "<div style=\"color: green;\">"
+             + "Emploi du temps</div></html>");
+            edt.setBackground(new Color(250, 250, 250));
+            
+            gbc.gridx = 0;
+            gbc.gridy = 0;
+                    //La taille en hauteur et en largeur
+            gbc.gridheight = 1;
+            gbc.gridwidth = 1;
+            menuBar1.add(edt, gbc);
+            
+            recap = new JMenuItem("<html>"
              + "<div style=\"color: green; \">"
              + "Recapitulatif des cours</div></html>");
+            recap.setBackground(new Color(250, 250, 250));
+                    
+            gbc.gridx = 1;
+            gbc.gridy = 0;
+                    //La taille en hauteur et en largeur
+            gbc.gridheight = 1;
+            gbc.gridwidth = 1;
+            menuBar1.add(recap, gbc); 
+            
+            //pour décaler les boutons à droite
+            r = new JMenuItem();
+            r.setPreferredSize(new Dimension(820, 20));
+            r.setBackground(new Color(250, 250, 250));
+            gbc.gridx = 2;
+            gbc.gridy = 0;
+            menuBar1.add(r, gbc); 
+
            
+      
+
+        recap.addActionListener( new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) {
+             btnRecap( e );
+            }
+        });
         
-       menuBar1.add(edt);
+        edt.addActionListener( new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) {
+             btnEdt( e );
+            }
+        });
         
-       menuBar1.add(recap);
+
+       //menuBar1.add(recap);
        
      
        
        
        return menuBar1;
-        
-        
-        
-        
-     
+
     }
     
+    private void btnRecap ( ActionEvent event )
+    { 
+        System.out.println("Recap bouton cliqué !");
+        Recap_cours rc = new Recap_cours();
+   
+    }
+    private void btnEdt ( ActionEvent event )
+    { 
+        System.out.println("EDT bouton cliqué !");
+        Page p = new Page();
+   
+    }
     
  
     
@@ -99,8 +161,8 @@ public class TopBar extends JFrame{
         
         JMenu menuCours = new JMenu ("en grille");
         //Sous menu 
-        JMenuItem menuEdt = new JMenuItem ("choix 1");
-        JMenuItem menuRecap = new JMenuItem ("choix 2");
+        JMenuItem menuEdt = new JMenuItem ("en grille");
+        JMenuItem menuRecap = new JMenuItem ("en liste");
         
         menuCours.add(menuEdt);
         menuCours.addSeparator();

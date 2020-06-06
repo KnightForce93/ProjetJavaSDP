@@ -31,11 +31,12 @@ public class SeanceDAO extends DAO<Seance>{
     }
     return seance; 
   }
-    public boolean create(Seance obj) {
-    return false;
+    public void create(Seance obj) {
+      
   }
    
-  public boolean update(Seance obj) {
+  public boolean update() {
+    
     return false;
   }
 }

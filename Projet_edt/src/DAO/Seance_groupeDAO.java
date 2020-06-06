@@ -20,12 +20,17 @@ public class Seance_groupeDAO extends DAO<Seance_groupe>{
       Seance_groupe seance_groupe = new Seance_groupe();      
        String requete;
        ResultSet resultat;
+       ArrayList<Integer> liste;
+       liste = new ArrayList<>();
       
     try {
         requete= "SELECT * FROM seance_groupe WHERE id = " + id;
         resultat=this.connect.remplirChampsRequete(requete);
+         while (resultat.next()) {
+           liste.add(resultat.getInt("id_groupe"));
+        }
          if(resultat.first()){
-            seance_groupe= new Seance_groupe(id,resultat.getInt("id_groupe"));
+            seance_groupe= new Seance_groupe(id,liste);
          }
         
     } catch (SQLException e) {

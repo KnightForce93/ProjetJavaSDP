@@ -5,6 +5,12 @@
  */
 package Vue;
 
+import DAO.Connexion;
+import Modele.MAJ.Recherche;
+import Modele.entite.Utilisateur;
+import java.sql.SQLException;
+import java.sql.*;
+
 /**
  *
  * @author thomaspopielski
@@ -14,16 +20,24 @@ public class main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         // TODO code application logic here
+         
+        String nameDatabase = "projetjava";
+        String loginDatabase = "root"; 
+        //pour mac
+        String passwordDatabase = "";
+        
+        Connexion co = new Connexion(nameDatabase,loginDatabase, passwordDatabase);
+        Recherche re= new Recherche(co);
+                
+        FirstPage fe = new FirstPage(re);
+        fe.setVisible(true);
         
         
-        //FirstPage fe = new FirstPage();
-        //fe.setVisible(true);
        
-        Page p = new Page();
-        p.setVisible(true);
-           
+        
+         
     }
     
 }

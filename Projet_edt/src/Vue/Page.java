@@ -5,6 +5,8 @@
  */
 package Vue;
 
+import Modele.MAJ.Recherche;
+import Modele.entite.Utilisateur;
 import Vue.Grille;
 import Vue.TopBar;
 import java.awt.BorderLayout;
@@ -29,9 +31,11 @@ public class Page extends JFrame{
     private JButton b1, b2, b3;
     private final JPanel p0, p01, p1, nord, p2, p3, p02;
     private JLabel t0, t1, tnord, t2,t3, ht;
+    private Utilisateur user;
+    private Recherche re;
 
     
-    public Page()
+    public Page(Utilisateur u, Recherche r)
     {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Quand l'utilisateur ferme la fenetre code stop, voir DISPOSE_ON_CLOSE
         setSize(1200, 800); // Taille de la fenetre
@@ -41,11 +45,9 @@ public class Page extends JFrame{
         setResizable(true);
         setVisible(true);
         
-        //Création des Labels
-        t0= new JLabel("<html><font color=red> Texte de T0 </font> </html>");
-        t1= new JLabel("<html><font color=red> Texte de T1 </font> </html>");
-        
-        
+        user = u;
+        re= r;
+      
         
         //Création des panels:
         p0 = new JPanel();
@@ -79,7 +81,7 @@ public class Page extends JFrame{
         creationMois(p02);
         
         //creationGrille(p2);
-        Grille g = new Grille(p2);
+        Grille g = new Grille(p2, user, re);
         
         //On ajout les deux panels p0 et p1 au Nord
         nord.add("North", p0);

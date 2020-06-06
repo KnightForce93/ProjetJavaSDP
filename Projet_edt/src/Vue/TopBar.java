@@ -146,7 +146,7 @@ public class TopBar extends JFrame{
     private void btnEdt ( ActionEvent event )
     { 
         System.out.println("EDT bouton cliqué !");
-        Page p = new Page();
+       // Page p = new Page();
    
     }
     

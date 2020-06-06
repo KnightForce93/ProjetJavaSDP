@@ -7,19 +7,28 @@ package Modele.MAJ;
 import java.util.ArrayList;
 import DAO.*;
 import Modele.entite.*;
+import DAO.Connexion;
 /**
  *
  * @author wass1
  */
 public class Recherche {
     
-    public Utilisateur ConnexionU(String email, String mdp, Connexion con){
+    private Connexion con;
+    
+    public Recherche(Connexion co)
+    {
+        this.con = co;
+    
+    }
+    
+    public Utilisateur ConnexionU(String email, String mdp){
          UtilisateurDAO utilisateurdao= new UtilisateurDAO(con);
          Utilisateur utilisateur= new Utilisateur();
-         utilisateur=utilisateurdao.find(email, mdp);
+         utilisateur=utilisateurdao.finds(email, mdp);
          return utilisateur;
     }
-    public ArrayList<String> EdtEtudiant(int sem, int id, Connexion con){
+    public ArrayList<String> EdtEtudiant(int sem, int id){
          ArrayList<String> Edt= new ArrayList<String>();
          EtudiantDAO etudiantdao= new EtudiantDAO(con);
          Etudiant etudiant = new Etudiant();
@@ -102,7 +111,7 @@ public class Recherche {
         return Edt;
     }
     
-     public ArrayList<String> EdtEnseignant(int sem, int id, Connexion con){
+     public ArrayList<String> EdtEnseignant(int sem, int id){
          ArrayList<String> Edt= new ArrayList<String>();
          Seance_enseignantDAO seance_enseignantdao= new Seance_enseignantDAO(con);
          Seance_enseignant seance_enseignant = new Seance_enseignant();
@@ -184,7 +193,7 @@ public class Recherche {
         return Edt;
     }
     
-     public ArrayList<String> EdtSalle (int sem, int id, Connexion con){
+     public ArrayList<String> EdtSalle (int sem, int id){
          ArrayList<String> Edt= new ArrayList<String>();
          SalleDAO Salledao= new SalleDAO(con);
          Salle salle= new Salle();
@@ -266,7 +275,7 @@ public class Recherche {
         return Edt;
     }
     
-     public ArrayList<String> Edtgroupe(int sem, int id, Connexion con){
+     public ArrayList<String> Edtgroupe(int sem, int id){
          ArrayList<String> Edt= new ArrayList<String>();
          
          GroupeDAO groupedao= new GroupeDAO(con);

@@ -27,7 +27,7 @@ public class Type_coursDAO extends DAO<Type_cours>{
        ResultSet resultat;
       
     try {
-        requete= "SELECT * FROM Type_cours WHERE id = " + id;
+        requete= "SELECT * FROM Type_cours WHERE id = '" + id + "'";
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             type_cours= new Type_cours(id,resultat.getString("nom"));

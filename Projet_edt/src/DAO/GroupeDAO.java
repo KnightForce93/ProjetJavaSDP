@@ -27,7 +27,7 @@ public class GroupeDAO extends DAO<Groupe>{
        ResultSet resultat;
        
     try {
-        requete= "SELECT * FROM Groupe WHERE id = " + id;
+        requete= "SELECT * FROM Groupe WHERE id = '" + id + "'";
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             groupe = new Groupe(id,resultat.getString("nom"),resultat.getInt("id_promotion"));

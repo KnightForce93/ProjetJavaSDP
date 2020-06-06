@@ -27,7 +27,7 @@ public class PromotionDAO extends DAO<Promotion>{
        ResultSet resultat;
       
     try {
-        requete= "SELECT * FROM Promotion WHERE id = " + id;
+        requete= "SELECT * FROM Promotion WHERE id = '" + id + "'";
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             promotion = new Promotion(id,resultat.getString("nom"));

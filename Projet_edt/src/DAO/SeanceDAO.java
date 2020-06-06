@@ -28,7 +28,7 @@ import java.sql.*;
              ResultSet resultat;
 
           try {
-              requete= "SELECT * FROM Seance WHERE id = " + id;
+              requete= "SELECT * FROM Seance WHERE id = '" + id + "'";
               resultat=this.connect.remplirChampsRequete(requete);
                if(resultat.first()){
                   seance = new Seance(id,resultat.getInt("semaine"),resultat.getString("date"),resultat.getString("heure_debut"),resultat.getString("heure_fin"),resultat.getInt("etat"),resultat.getInt("id_cours"),resultat.getInt("id_type"));

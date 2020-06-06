@@ -27,7 +27,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
        ResultSet resultat;
       
     try {
-        requete= "SELECT * FROM Utilisateur WHERE id = " + id;
+        requete= "SELECT * FROM Utilisateur WHERE id = '" + id + "'";
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             utilisateur = new Utilisateur(id,resultat.getString("email"),resultat.getString("password"), resultat.getString("nom"),resultat.getString("prenom"),resultat.getInt("droit"));

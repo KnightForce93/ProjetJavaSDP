@@ -27,7 +27,7 @@ public class EnseignantDAO extends DAO<Enseignant>{
        ResultSet resultat;
       
     try {
-        requete= "SELECT * FROM Enseignant WHERE id = " + id;
+        requete= "SELECT * FROM Enseignant WHERE id = '" + id + "'";
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             enseignant = new Enseignant(id,resultat.getInt("id_cours"));

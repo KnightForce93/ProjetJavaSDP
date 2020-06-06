@@ -27,7 +27,7 @@ public class SiteDAO extends DAO<Site>{
        ResultSet resultat;
       
     try {
-        requete= "SELECT * FROM Site WHERE id = " + id;
+        requete= "SELECT * FROM Site WHERE id = '" + id + "'";
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             site = new Site(id,resultat.getString("nom"));

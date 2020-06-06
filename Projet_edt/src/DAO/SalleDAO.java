@@ -27,7 +27,7 @@ public class SalleDAO extends DAO<Salle>{
        ResultSet resultat;
       
     try {
-        requete= "SELECT * FROM Salle WHERE id = " + id;
+        requete= "SELECT * FROM Salle WHERE id = '" + id + "'";
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             salle= new Salle(id,resultat.getString("nom"),resultat.getInt("capacite"),resultat.getInt("id_site"));

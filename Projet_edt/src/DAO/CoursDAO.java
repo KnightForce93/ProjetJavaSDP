@@ -27,7 +27,7 @@ public class CoursDAO extends DAO<Cours> {
        ResultSet resultat;
       
     try {
-        requete= "SELECT nom FROM Cours WHERE id = " + id;
+        requete= "SELECT nom FROM Cours WHERE id = '" + id + "'";
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             cours = new Cours(id,resultat.getString("nom"));

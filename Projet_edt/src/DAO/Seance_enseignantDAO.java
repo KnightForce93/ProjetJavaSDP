@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modele.DAO;
-import Modele.information.Seance_enseignant;
+package DAO;
+import Modele.entite.Seance_enseignant;
 import java.sql.*;
 /**
  *

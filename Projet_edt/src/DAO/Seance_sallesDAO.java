@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modele.DAO;
-import Modele.information.Seance_salles;
-import Modele.information.Seance;
+package DAO;
+import Modele.entite.Seance_salles;
+import Modele.entite.Seance;
 import java.sql.*;
 /**
  *

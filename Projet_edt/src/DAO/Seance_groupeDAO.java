@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modele.DAO;
-import Modele.information.Seance;
-import Modele.information.Seance_groupe;
+package DAO;
+import Modele.entite.Seance;
+import Modele.entite.Seance_groupe;
+import java.util.ArrayList;
 import java.sql.*;
 /**
  *
@@ -32,6 +33,27 @@ public class Seance_groupeDAO extends DAO<Seance_groupe>{
     }
     return seance_groupe; 
   }
+  
+  public ArrayList<Integer> findS(int id_g, int sem){    
+       String requete;
+       ResultSet resultat;
+       ArrayList<Integer> liste;
+       liste = new ArrayList<>();
+    try {
+        requete= "SELECT id_seance FROM seance_groupe, seance WHERE seance_groupe.id_seance=seance.id";
+        requete=" AND seance_groupe.id_groupe = " + id_g+" AND seance.semaine = "+ sem;
+        resultat=this.connect.remplirChampsRequete(requete);
+         
+        while (resultat.next()) {
+            liste.add(resultat.getInt("id_seance"));
+        }
+   
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return liste; 
+  }
+  
     public boolean create(Seance_groupe obj) {
     return false;
   }

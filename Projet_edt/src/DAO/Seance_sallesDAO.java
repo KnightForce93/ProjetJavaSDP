@@ -16,6 +16,13 @@ public class Seance_sallesDAO extends DAO<Seance_salles>{
      public Seance_sallesDAO(Connexion conn) {
     super(conn);
   }
+     /**
+     * Permet de trouver l'objet dans la BDD
+     *
+     * @param id
+     * @return seance_salles
+     * @throws SQLException
+     */
   public Seance_salles find(int id){
       Seance_salles seance_salles = new Seance_salles();      
        String requete;
@@ -23,7 +30,7 @@ public class Seance_sallesDAO extends DAO<Seance_salles>{
        ArrayList<Integer> liste;
        liste = new ArrayList<>();
     try {
-        requete= "SELECT * FROM seance_salles WHERE id = " + id;
+        requete= "SELECT * FROM Seance_salles WHERE id = " + id;
         resultat=this.connect.remplirChampsRequete(requete);
          while (resultat.next()) {
            liste.add(resultat.getInt("id_salle"));
@@ -44,8 +51,8 @@ public class Seance_sallesDAO extends DAO<Seance_salles>{
        ArrayList<Integer> liste;
        liste = new ArrayList<>();
     try {
-        requete= "SELECT id_seance FROM seance_salles, seance WHERE seance_salles.id_seance=seance.id";
-        requete=" AND seance_salles.id_salle = " + id_s+" AND seance.semaine = "+ sem;
+        requete= "SELECT id_seance FROM Seance_salles, seance WHERE Seance_salles.id_seance=Seance.id";
+        requete=" AND Seance_salles.id_salle = " + id_s+" AND Seance.semaine = "+ sem;
         resultat=this.connect.remplirChampsRequete(requete);
          
         while (resultat.next()) {
@@ -57,9 +64,34 @@ public class Seance_sallesDAO extends DAO<Seance_salles>{
     }
     return liste; 
   }
-   
-    public boolean create(Seance_salles obj) {
-    return false;
+   /**
+     * Permet de créer une seance_salles lorsque l'admin le demande
+     *
+     * @param obj
+     * @throws SQLException
+     */
+    public void create(Seance_salles obj) {
+        int idSe=obj.getId_seance();
+        ArrayList<Integer> idSa=obj.getId_salle();
+        
+        String requete;
+        ResultSet resultat;
+
+              try {
+                  for(int i : idSa) {
+                      requete= "INSERT INTO Seance_salles (id_seance, id_salle) VALUES (" + idSe + "," + idSa.get(i) + ")";
+                      resultat=this.connect.remplirChampsRequete(requete);
+                  /*
+                  if(resultat.first()){
+                      seance = new Seance(id,resultat.getInt("semaine"),resultat.getString("date"),resultat.getString("heure_debut"),resultat.getString("heure_fin"),resultat.getInt("etat"),resultat.getInt("id_cours"),resultat.getInt("id_type"));
+                  }
+                  */
+                  }
+                   
+
+              } catch (SQLException e) {
+                   e.printStackTrace();
+              }
   }
    
   public boolean update(Seance_salles obj) {

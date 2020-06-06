@@ -14,13 +14,20 @@ public class EnseignantDAO extends DAO<Enseignant>{
      public EnseignantDAO(Connexion conn) {
     super(conn);
   }
+     /**
+     * Permet de trouver l'objet dans la BDD
+     *
+     * @param id
+     * @return enseignant
+     * @throws SQLException
+     */
   public Enseignant find(int id){
         Enseignant enseignant = new Enseignant();      
        String requete;
        ResultSet resultat;
       
     try {
-        requete= "SELECT * FROM enseignant WHERE id = " + id;
+        requete= "SELECT * FROM Enseignant WHERE id = " + id;
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             enseignant = new Enseignant(id,resultat.getInt("id_cours"));

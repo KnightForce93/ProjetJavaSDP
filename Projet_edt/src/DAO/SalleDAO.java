@@ -14,13 +14,20 @@ public class SalleDAO extends DAO<Salle>{
      public SalleDAO(Connexion conn) {
     super(conn);
   }
+     /**
+     * Permet de trouver l'objet dans la BDD
+     *
+     * @param id
+     * @return salle
+     * @throws SQLException
+     */
   public Salle find(int id){
       Salle salle = new Salle();      
        String requete;
        ResultSet resultat;
       
     try {
-        requete= "SELECT * FROM salle WHERE id = " + id;
+        requete= "SELECT * FROM Salle WHERE id = " + id;
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             salle= new Salle(id,resultat.getString("nom"),resultat.getInt("capacite"),resultat.getInt("id_site"));

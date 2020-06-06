@@ -14,13 +14,20 @@ public class GroupeDAO extends DAO<Groupe>{
      public GroupeDAO(Connexion conn) {
     super(conn);
   }
+     /**
+     * Permet de trouver l'objet dans la BDD
+     *
+     * @param id
+     * @return groupe
+     * @throws SQLException
+     */
   public Groupe find(int id){
        Groupe groupe = new Groupe();      
        String requete;
        ResultSet resultat;
        
     try {
-        requete= "SELECT * FROM groupe WHERE id = " + id;
+        requete= "SELECT * FROM Groupe WHERE id = " + id;
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             groupe = new Groupe(id,resultat.getString("nom"),resultat.getInt("id_promotion"));

@@ -14,13 +14,20 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
      public UtilisateurDAO(Connexion conn) {
     super(conn);
   }
+     /**
+     * Permet de trouver l'objet dans la BDD
+     *
+     * @param id
+     * @return utilisateur
+     * @throws SQLException
+     */
   public Utilisateur find(int id){
       Utilisateur utilisateur = new Utilisateur();      
        String requete;
        ResultSet resultat;
       
     try {
-        requete= "SELECT * FROM utilisateur WHERE id = " + id;
+        requete= "SELECT * FROM Utilisateur WHERE id = " + id;
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             utilisateur = new Utilisateur(id,resultat.getString("email"),resultat.getString("password"), resultat.getString("nom"),resultat.getString("prenom"),resultat.getInt("droit"));

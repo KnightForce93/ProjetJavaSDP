@@ -14,13 +14,20 @@ public class CoursDAO extends DAO<Cours> {
   public CoursDAO(Connexion conn) {
     super(conn);
   }
+  /**
+     * Permet de trouver l'objet dans la BDD
+     *
+     * @param id
+     * @return cours
+     * @throws SQLException
+     */
   public Cours find(int id){
        Cours cours = new Cours();      
        String requete;
        ResultSet resultat;
       
     try {
-        requete= "SELECT nom FROM cours WHERE id = " + id;
+        requete= "SELECT nom FROM Cours WHERE id = " + id;
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             cours = new Cours(id,resultat.getString("nom"));

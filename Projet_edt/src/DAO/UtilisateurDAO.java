@@ -38,4 +38,21 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
     }
     return utilisateur; 
   }
+    public Utilisateur find(String email, String mdp){
+      Utilisateur utilisateur = new Utilisateur();      
+       String requete;
+       ResultSet resultat;
+      
+    try {
+        requete= "SELECT * FROM Utilisateur WHERE email = " + email+ " AND password = "+mdp;
+        resultat=this.connect.remplirChampsRequete(requete);
+         if(resultat.first()){
+            utilisateur = new Utilisateur(resultat.getInt("id"),resultat.getString("email"),resultat.getString("password"), resultat.getString("nom"),resultat.getString("prenom"),resultat.getInt("droit"));
+         }
+        
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return utilisateur; 
+  }
 }

@@ -9,12 +9,15 @@ package Vue;
  *
  * @author thomaspopielski
  */
+import Modele.MAJ.Recherche;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -30,8 +33,9 @@ import javax.swing.border.Border;
  */
 public class  Grille extends JFrame{
     
-    private JPanel top, left, center;
+    private JPanel top, left, center, seance;
     private JButton btn1, btn2;
+  
     
     
     public Grille(JPanel content)
@@ -44,6 +48,8 @@ public class  Grille extends JFrame{
         left = new JPanel();
         center = new JPanel();
 
+        seance = new JPanel();
+        
         //boutons
         btn1 = new JButton("test1");
         btn2 = new JButton("test2");
@@ -56,6 +62,8 @@ public class  Grille extends JFrame{
 
 
         createCentre(center);
+     
+        
         
         
         content.add(top, BorderLayout.NORTH);
@@ -151,36 +159,35 @@ public class  Grille extends JFrame{
     }
     
     private void createCentre(JPanel centre)
-    {
+    {   
         JPanel cell[][]= new JPanel[6][13];
-        JButton test = new JButton("test");
 
+        Recherche rech=new Recherche();
+        ArrayList<String> str= new ArrayList();
+        String n = "2020-06-05,12h,10h,365,E2,info,oi,prof,groupe";
+        str.add(n);
+        n = "2020-06-03,15h30,10h,365,E2,info,oi,prof,groupe";
+        str.add(n);
+         
         Border blackline = BorderFactory.createLineBorder(Color.black);
         
         centre.setBackground(Color.WHITE);
-        
-        Random r = new Random();
-        int low = 1;
-        int high = 6;
-        
-        
 
         //On définit le layout manager
         centre.setLayout(new GridBagLayout());
 
         //L'objet servant à positionner les composants
         GridBagConstraints gbc = new GridBagConstraints();
-        
-        
-        
+
         
         for(int i=0; i<6; i++){ 
 
             for(int j=0; j<13; j++){
                 
+                //Case pour les séances
                 if(j%2==0)
                 {
-                    cell[i][j]= new JPanel();
+                    cell[i][j] = new JPanel();
                     cell[i][j].setPreferredSize(new Dimension(144, 102));
                 
                     cell[i][j].setBackground(Color.WHITE);
@@ -188,13 +195,14 @@ public class  Grille extends JFrame{
                     
                     gbc.gridx = j;
                     gbc.gridy = i;
+                    
                     //La taille en hauteur et en largeur
                     gbc.gridheight = 1;
                     gbc.gridwidth = 1;
-                    centre.add(cell[i][j], gbc);
                     
-                   int result = r.nextInt(high-low) + low;
-                   createSeance(cell[i][j], result);
+                    createSeance(i,j, cell[i][j],str);
+
+                    centre.add(cell[i][j], gbc);
 
                 }
                 
@@ -216,33 +224,76 @@ public class  Grille extends JFrame{
                     centre.add(cell[i][j], gbc);
 
                 }
-                
-                
-                
+
             }
-            
 
         }
-        /*
-        createSeance(cell[0][0], 2);
-        createSeance(cell[2][4], 1);
-        createSeance(cell[1][2], 2);
-        createSeance(cell[2][6], 3);
-        */
-       
-        
+           
+   
     }
     
-    
-    
-    
-    private void createSeance(JPanel cell, int c)
-    {
-        
-        Seance s = new Seance(cell, c);
-        
-        
 
+    private void createSeance(int i, int j, JPanel c, ArrayList<String> str)
+    { 
+        JPanel cell[][] = new JPanel[6][13];
+        HashMap<String, Integer> table = new HashMap<String, Integer>();
+           table.put("8h30",0);
+           table.put("10h15",2);
+           table.put("12h",4);
+           table.put("13h45",6);
+           table.put("15h30",8);
+           table.put("17h15",10);
+           table.put("19h",12);
+        
+        for(String s:str){
+          // date, hd, hf, salle, site, cours, typeCours, prof, grp
+           
+           String[] parts = s.split(",");
+           String date = parts[0]; 
+           String hd = parts[1]; 
+           String hf = parts[2]; 
+           String salle = parts[3]; 
+           String site = parts[4]; 
+           String cours = parts[5]; 
+           String typeCours = parts[6]; 
+           String prof = parts[7]; 
+           String grp = parts[8]; 
+           
+           String[] datesplit = date.split("-");
+          
+           int z;
+           int annee = Integer.parseInt(datesplit[0]);
+           int mois = Integer.parseInt(datesplit[1]);
+           int jour = Integer.parseInt(datesplit[2]);
+           int Day;
+           if( mois >=3)
+           {
+               z=annee;
+               Day = (((23*mois)/9) + jour + 4 + annee + (z/4) - (z/100) + (z/400) - 2)%7;
+           }
+           else
+           {
+               z= annee-1;
+               Day = (((23*mois)/9) + jour + 4 + annee + (z/4) - (z/100) + (z/400))%7;
+           }
+       
+           
+           if (i==Day-1 && j==(table.get(hd)))
+           {
+               
+             JLabel test = new JLabel("<html><div style=\" "
+                     + "color: white;\">\n" +
+                            salle +" "+ site +"<br>"+ cours+"<br>" + prof+"<br>" + grp + "<br>" +
+                        "</div></html>");
+             
+             c.setBackground(Color.red);
+             c.add(test);
+             
+             System.out.println("test");
+             
+           }
+        }
+      
     }
     
     

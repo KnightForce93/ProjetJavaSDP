@@ -3,38 +3,39 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Seance_enseignant.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/SeanceDAO.java</file>
             <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Vue/MyButton.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Enseignant.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/EtudiantDAO.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Site.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Cours.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/SiteDAO.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/DAO.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/GroupeDAO.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Etudiant.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/Seance_enseignantDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Type_cours.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/UtilisateurDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/Seance_groupeDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Seance.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/SeanceDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Seance_groupe.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/Type_coursDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/CoursDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/MAJ/Recherche.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/Seance_sallesDAO.java</file>
             <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/MAJ/Maj.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Utilisateur.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/SalleDAO.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/PromotionDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/GroupeDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Site.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Seance_salles.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/SalleDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/PromotionDAO.java</file>
             <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Controlleur/Main.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/Type_coursDAO.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/Seance_groupeDAO.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/CoursDAO.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Groupe.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Type_cours.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Salle.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/Seance_sallesDAO.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Seance_groupe.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/EnseignantDAO.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/Connexion.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Seance_salles.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Seance.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/UtilisateurDAO.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/DAO/Seance_enseignantDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Seance_enseignant.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/EtudiantDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Etudiant.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/SiteDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Salle.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/EnseignantDAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/Connexion.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Utilisateur.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Promotion.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/DAO.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Groupe.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Cours.java</file>
+            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Enseignant.java</file>
             <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Vue/FirstPage.java</file>
-            <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/information/Promotion.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,21 +5,23 @@
  */
 package Modele.entite;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author wass1
  */
 public class Seance_enseignant {
     private int id_seance;
-    private int id_enseignant;
+    private ArrayList<Integer> id_enseignant;
     
     //constructeur
     public Seance_enseignant() {
         id_seance=0;
-        id_enseignant=0;
+        id_enseignant= new ArrayList<Integer>();
     }
     
-    public Seance_enseignant(int id_seance, int id_enseignant) {
+    public Seance_enseignant(int id_seance, ArrayList<Integer> id_enseignant) {
         this.id_seance=id_seance;
         this.id_enseignant=id_enseignant;
     }
@@ -28,7 +30,7 @@ public class Seance_enseignant {
     public int getId_seance() {
         return this.id_seance;
     }
-    public int getId_enseignant() {
+    public ArrayList<Integer> getId_enseignant() {
         return this.id_enseignant;
     }
     
@@ -36,7 +38,7 @@ public class Seance_enseignant {
     public void setId_seance(int id_seance) {
         this.id_seance=id_seance;
     }
-    public void setId_enseignant(int id_enseignant) {
+    public void setId_enseignant(ArrayList<Integer> id_enseignant) {
         this.id_enseignant=id_enseignant;
     }
 }

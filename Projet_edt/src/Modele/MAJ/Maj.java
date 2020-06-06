@@ -11,5 +11,5 @@ package Modele.MAJ;
  * @author wass1
  */
 public class Maj {
-
+ 
 }

@@ -9,6 +9,7 @@ package Vue;
  *
  * @author thomaspopielski
  */
+import Modele.MAJ.Recherche;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -158,10 +159,16 @@ public class  Grille extends JFrame{
     }
     
     private void createCentre(JPanel centre)
-    {
+    {   
         JPanel cell[][]= new JPanel[6][13];
 
-
+        Recherche rech=new Recherche();
+        ArrayList<String> str= new ArrayList();
+        String n = "2020-06-05,12h,10h,365,E2,info,oi,prof,groupe";
+        str.add(n);
+        n = "2020-06-03,15h30,10h,365,E2,info,oi,prof,groupe";
+        str.add(n);
+         
         Border blackline = BorderFactory.createLineBorder(Color.black);
         
         centre.setBackground(Color.WHITE);
@@ -193,7 +200,7 @@ public class  Grille extends JFrame{
                     gbc.gridheight = 1;
                     gbc.gridwidth = 1;
                     
-                    createSeance(i,j, cell[i][j]);
+                    createSeance(i,j, cell[i][j],str);
 
                     centre.add(cell[i][j], gbc);
 
@@ -226,14 +233,19 @@ public class  Grille extends JFrame{
     }
     
 
-    private void createSeance(int i, int j, JPanel c)
+    private void createSeance(int i, int j, JPanel c, ArrayList<String> str)
     { 
         JPanel cell[][] = new JPanel[6][13];
+        HashMap<String, Integer> table = new HashMap<String, Integer>();
+           table.put("8h30",0);
+           table.put("10h15",2);
+           table.put("12h",4);
+           table.put("13h45",6);
+           table.put("15h30",8);
+           table.put("17h15",10);
+           table.put("19h",12);
         
-        String s = "10/02/2020,12h,10h,365,E2,info,oi,prof,groupe";
-
-        
-           String text = null;
+        for(String s:str){
           // date, hd, hf, salle, site, cours, typeCours, prof, grp
            
            String[] parts = s.split(",");
@@ -247,37 +259,26 @@ public class  Grille extends JFrame{
            String prof = parts[7]; 
            String grp = parts[8]; 
            
-           
-          HashMap<String, Integer> table = new HashMap<String, Integer>();
-           table.put("8h30",0);
-           table.put("10h15",2);
-           table.put("12h",4);
-           table.put("13h45",6);
-           table.put("15h30",8);
-           table.put("17h15",10);
-           table.put("19h",12);
-           
            String[] datesplit = date.split("-");
-           
-           
+          
            int z;
            int annee = Integer.parseInt(datesplit[0]);
            int mois = Integer.parseInt(datesplit[1]);
            int jour = Integer.parseInt(datesplit[2]);
-           
+           int Day;
            if( mois >=3)
            {
                z=annee;
-               int D = (((23*mois)/9) + jour + 4 + annee + (z/4) - (z/100) + (z/400) - 2)%7;
+               Day = (((23*mois)/9) + jour + 4 + annee + (z/4) - (z/100) + (z/400) - 2)%7;
            }
            else
            {
                z= annee-1;
-               int D = (((23*mois)/9) + jour + 4 + annee + (z/4) - (z/100) + (z/400))%7;
+               Day = (((23*mois)/9) + jour + 4 + annee + (z/4) - (z/100) + (z/400))%7;
            }
        
            
-           if (i==3 && j==(table.get(hd)))
+           if (i==Day-1 && j==(table.get(hd)))
            {
                
              JLabel test = new JLabel("<html><div style=\" "
@@ -291,6 +292,7 @@ public class  Grille extends JFrame{
              System.out.println("test");
              
            }
+        }
       
     }
     

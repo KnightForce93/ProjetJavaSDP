@@ -23,7 +23,7 @@ public class main {
        
         Page p = new Page();
         p.setVisible(true);
-         
+           
     }
     
 }

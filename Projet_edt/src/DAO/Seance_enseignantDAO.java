@@ -31,7 +31,7 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
     try {
         requete= "SELECT * FROM Seance_enseignants WHERE id = " + id;
         resultat=this.connect.remplirChampsRequete(requete);
-         while (resultat.next()) {
+        while (resultat.next()) {
            liste.add(resultat.getInt("id_enseignant"));
         }
          if(resultat.first()){

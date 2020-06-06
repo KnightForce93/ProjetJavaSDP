@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,8 +23,10 @@ import javax.swing.JTextField;
 public class FirstPage extends JFrame{
     
      private JPanel nord,centre;
-    private static JLabel connexion, connexionL, connexionR, id, mdp;
+    private static JLabel connexion, id, mdp;
     private static MyButton btnco;
+    private static JTextField idtxt, mdptxt;
+
     
     
     public FirstPage()
@@ -68,10 +72,10 @@ public class FirstPage extends JFrame{
     //On définit le layout manager
     centre.setLayout(new GridBagLayout());
 
-      JTextField idtxt = new JTextField();
+      idtxt = new JTextField();
       idtxt.setPreferredSize(new Dimension(120, 40));
       
-      JTextField mdptxt = new JTextField();
+      mdptxt = new JTextField();
       mdptxt.setPreferredSize(new Dimension(120, 40));
     //  mdptxt.setBorder(new LineBorder(Color.RED, 2)); couleur des bordures
 
@@ -90,7 +94,14 @@ public class FirstPage extends JFrame{
              + "<h3>Mot de passe </h3></div></html>");
       mdp.setPreferredSize(new Dimension(120, 40));
       
-     
+       
+      btnco.addActionListener( new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) {
+             connexionTest( e );
+            }
+        }); 
+
      //L'objet servant à positionner les composants
     GridBagConstraints gbc = new GridBagConstraints();
     
@@ -123,11 +134,25 @@ public class FirstPage extends JFrame{
     gbc.gridy = 2;
     gbc.gridwidth = 2;
     centre.add(btnco, gbc);
-
-    
-
-      
       
    }
+   
+    private static void connexionTest ( ActionEvent event )
+    { 
+        String id, mdp;
+        System.out.println("Recap bouton cliqué !");
+        id = idtxt.getText();
+        System.out.println("Identifiant: "+id);
+        
+        mdp = mdptxt.getText();
+        System.out.println("mot de passe: "+ mdp);
+        
+        if("Thomas".equals(id) && "1234".equals(mdp))
+        {
+            Page p = new Page();
+            p.setVisible(true);
+        }
+   
+    }
     
 }

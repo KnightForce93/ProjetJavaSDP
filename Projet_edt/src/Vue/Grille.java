@@ -10,6 +10,7 @@ package Vue;
  * @author thomaspopielski
  */
 import Modele.MAJ.Recherche;
+import Modele.entite.Utilisateur;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -35,14 +36,16 @@ public class  Grille extends JFrame{
     
     private JPanel top, left, center, seance;
     private JButton btn1, btn2;
-  
+    private Utilisateur user;
+    private Recherche re;
+
     
-    
-    public Grille(JPanel content)
+    public Grille(JPanel content, Utilisateur u, Recherche r)
     {
         content.setLayout(new BorderLayout());
         
-        
+        user = u;
+        re = r;
         //panneaux
         top = new JPanel();
         left = new JPanel();
@@ -54,8 +57,6 @@ public class  Grille extends JFrame{
         btn1 = new JButton("test1");
         btn2 = new JButton("test2");
         
-        //top.add(btn1);
-        //createHours(top);
         createHours(top);
 
         createDay(left);
@@ -162,13 +163,9 @@ public class  Grille extends JFrame{
     {   
         JPanel cell[][]= new JPanel[6][13];
 
-        Recherche rech=new Recherche();
-        ArrayList<String> str= new ArrayList();
-        String n = "2020-06-05,12h,10h,365,E2,info,oi,prof,groupe";
-        str.add(n);
-        n = "2020-06-03,15h30,10h,365,E2,info,oi,prof,groupe";
-        str.add(n);
-         
+        
+        ArrayList<String> str= re.EdtEtudiant(1, user.getId());
+       
         Border blackline = BorderFactory.createLineBorder(Color.black);
         
         centre.setBackground(Color.WHITE);
@@ -244,6 +241,11 @@ public class  Grille extends JFrame{
            table.put("15h30",8);
            table.put("17h15",10);
            table.put("19h",12);
+           
+        HashMap<String, Color> tableCouleur = new HashMap<String, Color>();
+           tableCouleur.put("maths", new Color(246, 179, 130));
+           tableCouleur.put("anglais", new Color(142, 246, 130));
+         
         
         for(String s:str){
           // date, hd, hf, salle, site, cours, typeCours, prof, grp

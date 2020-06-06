@@ -5,12 +5,18 @@
  */
 package Vue;
 
+import DAO.Connexion;
+import Modele.MAJ.Recherche;
+import Modele.entite.Utilisateur;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,19 +29,26 @@ import javax.swing.JTextField;
 public class FirstPage extends JFrame{
     
      private JPanel nord,centre;
-    private static JLabel connexion, id, mdp;
+    private static JLabel connexion, mail, mdp;
     private static MyButton btnco;
-    private static JTextField idtxt, mdptxt;
-
+    private static JTextField mailtxt, mdptxt;
+    private static Recherche r;
+    private static String nameDatabase = "projetjava";
+    private   static  String loginDatabase = "root"; 
+    //pour mac
+    private static String passwordDatabase = "root";
+        
+        
     
     
-    public FirstPage()
+    
+    public FirstPage(Connexion con)
     {
     this.setTitle("Connection");
     this.setSize(800, 600);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLocationRelativeTo(null);
-    
+    this.r = new Recherche(con);
 
      setResizable(true);
      setVisible(true);
@@ -72,8 +85,8 @@ public class FirstPage extends JFrame{
     //On définit le layout manager
     centre.setLayout(new GridBagLayout());
 
-      idtxt = new JTextField();
-      idtxt.setPreferredSize(new Dimension(120, 40));
+      mailtxt = new JTextField();
+      mailtxt.setPreferredSize(new Dimension(120, 40));
       
       mdptxt = new JTextField();
       mdptxt.setPreferredSize(new Dimension(120, 40));
@@ -84,10 +97,10 @@ public class FirstPage extends JFrame{
              + "<div style=\"color: black;\">"
              + "Connexion</div></html>");
       
-      id = new JLabel("<html>"
+      mail = new JLabel("<html>"
              + "<div style=\"color: white; text-align: center;\">"
              + "<h3>Identifiant </h3></div></html>");
-      id.setPreferredSize(new Dimension(120, 40));
+      mail.setPreferredSize(new Dimension(120, 40));
       
       mdp = new JLabel("<html>"
              + "<div style=\"color: white; text-align: center;\">"
@@ -98,7 +111,13 @@ public class FirstPage extends JFrame{
       btnco.addActionListener( new ActionListener()
         {
             public void actionPerformed(ActionEvent e) {
-             connexionTest( e );
+                try {
+                    connexionTest( e );
+                } catch (SQLException ex) {
+                    Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }); 
 
@@ -110,10 +129,10 @@ public class FirstPage extends JFrame{
     //La taille en hauteur et en largeur
     gbc.gridheight = 1;
     gbc.gridwidth = 1;
-    centre.add(id, gbc);
+    centre.add(mail, gbc);
     //---------------------------------------------
     gbc.gridx = 1;
-    centre.add(idtxt, gbc);
+    centre.add(mailtxt, gbc);
     //---------------------------------------------
     //Cette instruction informe le layout que c'est une fin de ligne
     gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -137,22 +156,27 @@ public class FirstPage extends JFrame{
       
    }
    
-    private static void connexionTest ( ActionEvent event )
+    private static void connexionTest ( ActionEvent event ) throws SQLException, ClassNotFoundException
     { 
-        String id, mdp;
+        Utilisateur user = new Utilisateur();
+        String mail, mdp;
         System.out.println("Recap bouton cliqué !");
-        id = idtxt.getText();
-        System.out.println("Identifiant: "+id);
+        mail = mailtxt.getText();
+        System.out.println("Identifiant: "+mail);
         
         mdp = mdptxt.getText();
         System.out.println("mot de passe: "+ mdp);
         
-        if("Thomas".equals(id) && "1234".equals(mdp))
+        user = r.ConnexionU(mail, mdp);
+        
+        if(user != null)
         {
-            Page p = new Page();
+            Page p = new Page(user, r);
             p.setVisible(true);
         }
+
    
     }
+    
     
 }

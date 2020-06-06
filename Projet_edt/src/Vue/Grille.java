@@ -230,7 +230,7 @@ public class  Grille extends JFrame{
     { 
         JPanel cell[][] = new JPanel[6][13];
         
-        String s = "10,12h,10h,365,E2,info,oi,prof,groupe";
+        String s = "10/02/2020,12h,10h,365,E2,info,oi,prof,groupe";
 
         
            String text = null;
@@ -257,12 +257,35 @@ public class  Grille extends JFrame{
            table.put("17h15",10);
            table.put("19h",12);
            
+           String[] datesplit = date.split("-");
            
+           
+           int z;
+           int annee = Integer.parseInt(datesplit[0]);
+           int mois = Integer.parseInt(datesplit[1]);
+           int jour = Integer.parseInt(datesplit[2]);
+           
+           if( mois >=3)
+           {
+               z=annee;
+               int D = (((23*mois)/9) + jour + 4 + annee + (z/4) - (z/100) + (z/400) - 2)%7;
+           }
+           else
+           {
+               z= annee-1;
+               int D = (((23*mois)/9) + jour + 4 + annee + (z/4) - (z/100) + (z/400))%7;
+           }
+       
            
            if (i==3 && j==(table.get(hd)))
            {
                
-             JLabel test = new JLabel(salle + site + cours + prof + grp);
+             JLabel test = new JLabel("<html><div style=\" "
+                     + "color: white;\">\n" +
+                            salle +" "+ site +"<br>"+ cours+"<br>" + prof+"<br>" + grp + "<br>" +
+                        "</div></html>");
+             
+             c.setBackground(Color.red);
              c.add(test);
              
              System.out.println("test");

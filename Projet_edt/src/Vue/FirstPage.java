@@ -29,26 +29,22 @@ import javax.swing.JTextField;
 public class FirstPage extends JFrame{
     
      private JPanel nord,centre;
-    private static JLabel connexion, mail, mdp;
-    private static MyButton btnco;
-    private static JTextField mailtxt, mdptxt;
-    private static Recherche r;
-    private static String nameDatabase = "projetjava";
-    private   static  String loginDatabase = "root"; 
-    //pour mac
-    private static String passwordDatabase = "root";
+    private JLabel connexion, mail, mdp;
+    private  MyButton btnco;
+    private  JTextField mailtxt, mdptxt;
+    private Recherche r;
         
         
     
     
     
-    public FirstPage(Connexion con)
+    public FirstPage(Recherche re)
     {
     this.setTitle("Connection");
     this.setSize(800, 600);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLocationRelativeTo(null);
-    this.r = new Recherche(con);
+    this.r = re;
 
      setResizable(true);
      setVisible(true);
@@ -78,7 +74,7 @@ public class FirstPage extends JFrame{
       
     } 
     
-   private static void creationConnexion(JPanel centre)
+   private  void creationConnexion(JPanel centre)
    {
        
     
@@ -114,9 +110,9 @@ public class FirstPage extends JFrame{
                 try {
                     connexionTest( e );
                 } catch (SQLException ex) {
-                    Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
+                    
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
+                    
                 }
             }
         }); 
@@ -156,7 +152,7 @@ public class FirstPage extends JFrame{
       
    }
    
-    private static void connexionTest ( ActionEvent event ) throws SQLException, ClassNotFoundException
+    private void connexionTest ( ActionEvent event ) throws SQLException, ClassNotFoundException
     { 
         Utilisateur user = new Utilisateur();
         String mail, mdp;
@@ -168,7 +164,7 @@ public class FirstPage extends JFrame{
         System.out.println("mot de passe: "+ mdp);
         
         user = r.ConnexionU(mail, mdp);
-        
+      
         if(user != null)
         {
             Page p = new Page(user, r);

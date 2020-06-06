@@ -26,12 +26,12 @@ public class main {
         String nameDatabase = "projetjava";
         String loginDatabase = "root"; 
         //pour mac
-        String passwordDatabase = "root";
+        String passwordDatabase = "";
         
         Connexion co = new Connexion(nameDatabase,loginDatabase, passwordDatabase);
-        
+        Recherche re= new Recherche(co);
                 
-        FirstPage fe = new FirstPage(co);
+        FirstPage fe = new FirstPage(re);
         fe.setVisible(true);
         
         

@@ -25,7 +25,7 @@ public class Recherche {
     public Utilisateur ConnexionU(String email, String mdp){
          UtilisateurDAO utilisateurdao= new UtilisateurDAO(con);
          Utilisateur utilisateur= new Utilisateur();
-         utilisateur=utilisateurdao.find(email, mdp);
+         utilisateur=utilisateurdao.finds(email, mdp);
          return utilisateur;
     }
     public ArrayList<String> EdtEtudiant(int sem, int id){

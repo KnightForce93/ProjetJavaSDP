@@ -5,6 +5,7 @@
  */
 package Vue;
 
+import Modele.entite.Utilisateur;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -32,17 +33,22 @@ import javax.swing.event.MenuListener;
 public class TopBar extends JFrame{
     
     private JPanel p0, p1;
-    
-    private static JButton btn1, btn2;
-    
-    private JMenu recap1;
-    private JMenuItem recap, edt, r;
+
+    private JMenuItem recap, edt, r, stat, creationSeance, maj;
+    private Utilisateur user;
+    private JTextField txt;
+    private String nom;
+    private Grille g;
     
      //Constructeur 
-    public TopBar (JPanel contentPanel1, JPanel contentPanel2 )
+    public TopBar (JPanel contentPanel1, JPanel contentPanel2, Utilisateur user, Grille g)
     {
         p0 = new JPanel();
         p1 = new JPanel();
+        
+        this.user = user;
+        this.g = g;
+        
         
         p0.setLayout(new GridLayout(1, 1));
         
@@ -66,6 +72,8 @@ public class TopBar extends JFrame{
     
     private JMenuBar Haut()
     {
+        int droit = user.getDroit();
+        
         JMenuBar menuBar1 = new JMenuBar(); 
         
         menuBar1.setLayout(new GridBagLayout());
@@ -91,36 +99,71 @@ public class TopBar extends JFrame{
             gbc.gridwidth = 1;
             menuBar1.add(edt, gbc);
             
-            recap = new JMenuItem("<html>"
-             + "<div style=\"color: green; \">"
-             + "Recapitulatif des cours</div></html>");
-            recap.setBackground(new Color(250, 250, 250));
-                    
-            gbc.gridx = 1;
-            gbc.gridy = 0;
-                    //La taille en hauteur et en largeur
-            gbc.gridheight = 1;
-            gbc.gridwidth = 1;
-            menuBar1.add(recap, gbc); 
-            
-            //pour décaler les boutons à droite
-            r = new JMenuItem();
-            r.setPreferredSize(new Dimension(820, 20));
-            r.setBackground(new Color(250, 250, 250));
-            gbc.gridx = 2;
-            gbc.gridy = 0;
-            menuBar1.add(r, gbc); 
+            if(droit == 3)
+            {
+                recap = new JMenuItem("<html>"
+                + "<div style=\"color: green; \">"
+                + "Recapitulatif des cours</div></html>");
+               recap.setBackground(new Color(250, 250, 250));
 
-           
-      
-
-        recap.addActionListener( new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e) {
-             btnRecap( e );
+               gbc.gridx = 1;
+               gbc.gridy = 0;
+                       //La taille en hauteur et en largeur
+               gbc.gridheight = 1;
+               gbc.gridwidth = 1;
+               menuBar1.add(recap, gbc); 
+               
+               
+               recap.addActionListener( new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e) {
+                     btnRecap( e );
+                    }
+                });
+               
             }
-        });
-        
+            
+            if(droit == 1)
+            {
+               stat = new JMenuItem("<html>"
+                + "<div style=\"color: green; \">"
+                + "Statistiques </div></html>");
+               stat.setBackground(new Color(250, 250, 250));
+
+               gbc.gridx = 2;
+               gbc.gridy = 0;
+                       //La taille en hauteur et en largeur
+               gbc.gridheight = 1;
+               gbc.gridwidth = 1;
+               menuBar1.add(stat, gbc); 
+               
+             creationSeance = new JMenuItem("<html>"
+                + "<div style=\"color: green; \">"
+                + "Création Séance </div></html>");
+               creationSeance.setBackground(new Color(250, 250, 250));
+
+               gbc.gridx = 3;
+               gbc.gridy = 0;
+                       //La taille en hauteur et en largeur
+               gbc.gridheight = 1;
+               gbc.gridwidth = 1;
+               menuBar1.add(creationSeance, gbc);
+               
+               maj = new JMenuItem("<html>"
+                + "<div style=\"color: green; \">"
+                + "Mise à jour </div></html>");
+               maj.setBackground(new Color(250, 250, 250));
+
+               gbc.gridx = 4;
+               gbc.gridy = 0;
+                       //La taille en hauteur et en largeur
+               gbc.gridheight = 1;
+               gbc.gridwidth = 1;
+               menuBar1.add(maj, gbc);
+            
+             
+            }
+     
         edt.addActionListener( new ActionListener()
         {
             public void actionPerformed(ActionEvent e) {
@@ -155,12 +198,17 @@ public class TopBar extends JFrame{
     
      private JMenuBar createMenuBar()
     {
+        
+        int droit = user.getDroit();
+        
+        
         JMenuBar menuBar = new JMenuBar();
         menuBar.setOpaque(true);
         menuBar.setBackground(Color.RED); 
         //Menu cours
         
         JMenu menuCours = new JMenu ("en grille");
+        
         //Sous menu 
         JMenuItem menuEdt = new JMenuItem ("en grille");
         JMenuItem menuRecap = new JMenuItem ("en liste");
@@ -171,31 +219,10 @@ public class TopBar extends JFrame{
         
         menuBar.add(menuCours);
         
-        //Menu Vie Scolaire
-        
-        JMenu menuVS = new JMenu ("Saisie du nom");
-        //Sous menu 
-        JMenuItem Absences = new JMenuItem ("choix 1");
-        JMenuItem Intervenants = new JMenuItem ("choix 2");
-        JMenuItem Scolarite = new JMenuItem ("choix 3");
-        JMenuItem CalendrierScolaire = new JMenuItem ("choix 4");
-        
-        menuVS.add(Absences);
-        menuVS.addSeparator();
-        menuVS.add(Intervenants);
-        menuVS.addSeparator();
-        menuVS.add(Scolarite);
-        menuVS.addSeparator();
-        menuVS.add(CalendrierScolaire);
-        
         menuBar.add(menuCours);
-        
-        //Barre de recherche
-        
-        JTextField txt = new JTextField("recherche...");
-        txt.setPreferredSize(new Dimension(120, 30));
-        
-        String name = new String ("Thomas POPIELSKI");
+
+       
+        String name = user.getNom()+" "+user.getPrenom();
         
         JLabel nom = new JLabel(name);
         nom.setPreferredSize(new Dimension (120, 30));
@@ -204,16 +231,105 @@ public class TopBar extends JFrame{
         //Ajout des menus à la page
         menuBar.add(nom);
         menuBar.add(menuCours);
-        menuBar.add(menuVS);
-        menuBar.add(txt);
+        
+        
+        //Menu Vie Scolaire
+
+        if(droit == 1 || droit == 2)
+        {
+            JMenu menuVS = new JMenu ("Données");
+        //Sous menu 
+        JMenuItem etudiant = new JMenuItem ("Etudiant");
+        
+        etudiant.addActionListener( new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) {
+             btnEtudiant( e );
+            }
+        });
+        JMenuItem enseignant = new JMenuItem ("Enseignant");
+        
+        enseignant.addActionListener( new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) {
+             btnEnseignant( e );
+            }
+        });
+        JMenuItem salle = new JMenuItem ("Salle");
+        
+        salle.addActionListener( new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) {
+             btnSalle( e );
+            }
+        });
+        JMenuItem Groupe = new JMenuItem ("Groupe");
+        
+        Groupe.addActionListener( new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) {
+             btnGroupe( e );
+            }
+        });
+        
+        txt = new JTextField("recherche...");
+        txt.setPreferredSize(new Dimension(120, 30));
+        
        
         
-        
-        
-        
+        menuVS.add(etudiant);
+        menuVS.addSeparator();
+        menuVS.add(enseignant);
+        menuVS.addSeparator();
+        menuVS.add(salle);
+        menuVS.addSeparator();
+        menuVS.add(Groupe);
+        menuBar.add(menuVS);
+        menuBar.add(txt);
+            
+        }
+
         
         return menuBar;
         
+    }
+     
+     private void btnEtudiant ( ActionEvent event )
+    { 
+        String recherche = new String();
+        System.out.println("Etudiant bouton cliqué !");
+        recherche = txt.getText();
+        nom=recherche+","+"etudiant";
+        
+        System.out.println("Identifiant: "+recherche);
+   
+    }
+      private void btnEnseignant ( ActionEvent event )
+    { 
+        String recherche = new String();
+        System.out.println("btnEnseignant bouton cliqué !");
+        recherche = txt.getText();
+        nom=recherche+","+"enseignant";
+        System.out.println("Identifiant: "+recherche);
+   
+    }
+       private void btnSalle ( ActionEvent event )
+    { 
+        String recherche = new String();
+        System.out.println("btnSalle bouton cliqué !");
+        recherche = txt.getText();
+        nom=recherche+","+"salle";
+        System.out.println("Identifiant: "+recherche);
+   
+    }
+        private void btnGroupe ( ActionEvent event )
+    { 
+        String recherche = new String();
+        System.out.println("btnGroupe bouton cliqué !");
+        recherche = txt.getText();
+        nom=recherche+","+"groupe";
+        System.out.println("Identifiant: "+recherche);
+   
     }
     
 }

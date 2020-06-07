@@ -13,12 +13,21 @@ public class Enseignant {
     private int id_utilisateur;
     private int id_cours;
     
-    //constructeur
+    /**
+     * Constructeur par défaut
+     *
+     */
     public Enseignant() {
          id_utilisateur=0;
         id_cours=0;
     }
     
+    /**
+     * Constructeur avec 2 paramètres : id_u et id_c
+     *
+     * @param id_u
+     * @param id_c
+     */
     public Enseignant(int id_u, int id_c) {
         this.id_utilisateur=id_u;
         this.id_cours=id_c;

@@ -14,13 +14,23 @@ public class Groupe {
     private String nom;
     private int id_promotion;
     
-    //constructeur
+    /**
+     * Constructeur par défaut
+     *
+     */
     public Groupe() {
          id=0;
          nom=null;
          id_promotion=0;
     }
     
+    /**
+     * Constructeur avec 3 paramètres : id, nom et id_p
+     *
+     * @param id
+     * @param nom
+     * @param id_p
+     */
     public Groupe(int id, String nom, int id_p) {
         this.id=id;
         this.nom=nom;

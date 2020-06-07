@@ -19,7 +19,10 @@ public class Seance {
     private int id_cours;
     private int id_type;
     
-    //constructeurs
+    /**
+     * Constructeur par défaut
+     *
+     */
     public Seance() {
         id=0;
         semaine=0;
@@ -30,6 +33,19 @@ public class Seance {
         id_cours=0;
         id_type=0;
     }
+    
+    /**
+     * Constructeur avec 8 paramètres : id, sem, date, heure_d, heure_f, etat, id_c et id_t
+     *
+     * @param id
+     * @param sem
+     * @param date
+     * @param heure_d
+     * @param heure_f
+     * @param etat
+     * @param id_c
+     * @param id_t
+     */
     public Seance(int id, int sem, String date, String heure_d, String heure_f, int etat,int id_c,int id_t) {
         this.id=id;
         this.semaine=sem;

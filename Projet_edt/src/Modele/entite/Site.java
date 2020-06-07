@@ -13,12 +13,21 @@ public class Site {
     private int id;
     private String nom;
     
-    //constructeur
+    /**
+     * Constructeur par défaut
+     *
+     */
     public Site() {
         id=0;
         nom=null;
     }
     
+    /**
+     * Constructeur avec 2 paramètres : id et nom
+     *
+     * @param id
+     * @param nom
+     */
     public Site(int id, String nom) {
         this.id=id;
         this.nom=nom;

@@ -14,13 +14,23 @@ public class Etudiant {
     private int numero;
     private int id_groupe;
     
-    //constructeur
+    /**
+     * Constructeur par défaut
+     *
+     */
     public Etudiant() {
          id_utilisateur=0;
          numero=0;
          id_groupe=0;
     }
     
+    /**
+     * Constructeur avec 3 paramètres : id_u, num et id_g 
+     *
+     * @param id_u
+     * @param num
+     * @param id_g
+     */
     public Etudiant(int id_u, int num, int id_g) {
         this.id_utilisateur=id_u;
         this.numero=num;

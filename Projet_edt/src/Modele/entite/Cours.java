@@ -13,12 +13,21 @@ public class Cours {
     private int id;
     private String nom;
     
-    //constructeur
+    /**
+     * Constructeur par défaut
+     *
+     */
     public Cours() {
         id=0;
         nom=null;
     }
     
+    /**
+     * Constructeur avec 2 paramètres : id et nom 
+     *
+     * @param id
+     * @param nom
+     */
     public Cours(int id, String nom) {
         this.id=id;
         this.nom=nom;

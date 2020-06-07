@@ -13,12 +13,21 @@ public class Type_cours {
     private int id;
     private String nom;
     
-    //constructeur
+    /**
+     * Constructeur par défaut
+     *
+     */
     public Type_cours() {
         id=0;
         nom=null;
     }
     
+    /**
+     * Constructeur avec 2 paramètres : id et nom
+     *
+     * @param id
+     * @param nom
+     */
     public Type_cours(int id, String nom) {
         this.id=id;
         this.nom=nom;

@@ -54,6 +54,39 @@ public class Recherche {
          return Dsalle;
     }
     
+    public void MAJens(int id_seance, String ensAv, String ensAp) {
+        UtilisateurDAO ensDAO = new UtilisateurDAO(con); 
+        Utilisateur ens1 = new Utilisateur();
+        Utilisateur ens2 = new Utilisateur();
+        
+        ens1=ensDAO.find(ensAv);
+        ens2=ensDAO.find(ensAp);
+        
+        Seance_enseignantDAO sen = new Seance_enseignantDAO(con);
+        sen.updateEns(id_seance, ens1.getId(), ens2.getId());
+    }
+    public void MAJgrp(int id_seance, String grpAv, String grpAp) {
+        GroupeDAO grpDAO = new GroupeDAO(con); 
+        Groupe grp1 = new Groupe();
+        Groupe grp2 = new Groupe();
+        
+        grp1=grpDAO.find(grpAv);
+        grp2=grpDAO.find(grpAp);
+        
+        Seance_groupeDAO grp = new Seance_groupeDAO(con);
+        grp.updateGrp(id_seance, grp1.getId(), grp2.getId());
+    }
+    public void MAJsll(int id_seance, String sllAv, String sllAp) {
+        SalleDAO sllDAO = new SalleDAO(con); 
+        Salle sll1 = new Salle();
+        Salle sll2 = new Salle();
+        
+        sll1=sllDAO.find(sllAv);
+        sll2=sllDAO.find(sllAp);
+        
+        Seance_sallesDAO sll = new Seance_sallesDAO(con);
+        sll.updateSalle(id_seance, sll1.getId(), sll2.getId());
+    }
     /**
      * Permet de créer un chaine avec toutes les infos des salles
      *

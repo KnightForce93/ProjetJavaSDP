@@ -107,14 +107,16 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
      * Méthode qui permet de mettre à jour une seance_enseignant lorsque l'admin le demande
      *
      * @param id_seance l'id de la séance
-     * @param valeur la valeur à attribuer
+     * @param enseignantAv la valeur avant
+     * @param enseignantAp la valeur à attribuer
      */
-    public void updateEns(int id_seance, int valeur) {
+    public void updateEns(int id_seance, int enseignantAv, int enseignantAp) {
     
         String requete;
-              ResultSet resultat;
+        ResultSet resultat;
         try {
-            requete= "UPDATE Seance_enseignants SET id_enseignant = '" + valeur + "' WHERE id_seance = '" + id_seance + "'";
+            
+            requete= "UPDATE Seance_enseignants SET id_enseignant = '" + enseignantAp + "' WHERE id_seance = '" + id_seance + "' AND id_enseignant = '" + enseignantAv + "'";
             resultat=this.connect.remplirChampsRequete(requete);
 
         } catch (SQLException e) {

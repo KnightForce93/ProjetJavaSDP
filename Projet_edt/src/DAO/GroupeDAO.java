@@ -44,4 +44,21 @@ public class GroupeDAO extends DAO<Groupe>{
     }
     return groupe; 
   }
+  public Groupe find(String id){
+       Groupe groupe = new Groupe();      
+       String requete;
+       ResultSet resultat;
+       
+    try {
+        requete= "SELECT * FROM Groupe WHERE nom = '" + id + "'";
+        resultat=this.connect.remplirChampsRequete(requete);
+         if(resultat.first()){
+            groupe = new Groupe(resultat.getInt("id"),resultat.getString("nom"),resultat.getInt("id_promotion"));
+         }
+        
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return groupe; 
+  }
 }

@@ -44,4 +44,5 @@ public class EtudiantDAO extends DAO<Etudiant>{
     }
     return etudiant; 
   }
+  
 }

@@ -303,8 +303,12 @@ public class  Grille extends JFrame{
            table.put("19:00:00",12);
            
         HashMap<String, Color> tableCouleur = new HashMap<String, Color>();
-           tableCouleur.put("maths", new Color(246, 179, 130));
-           tableCouleur.put("anglais", new Color(142, 246, 130));
+           tableCouleur.put("Analyse", new Color(45, 89, 133));
+           tableCouleur.put("English", new Color(54, 133, 45));
+           tableCouleur.put("Probabilités", new Color(89, 197, 192));
+           tableCouleur.put("Electronique", new Color(149, 60, 53));
+           tableCouleur.put("Droit", new Color(109, 45, 133));
+           tableCouleur.put("POO Java", new Color(145, 149, 53));
          
         
         for(String s:str){
@@ -348,7 +352,8 @@ public class  Grille extends JFrame{
                             salle +" "+ site +"<br><b>"+ cours+"</b><br>" + prof+"<br>" + grp + "<br>" + typeCours + "<br>"+
                         "</div></html>");
              
-             c.setBackground(Color.red);
+             //c.setBackground(Color.red);
+             c.setBackground(tableCouleur.get(cours));
              c.add(test);
              
              System.out.println("test");

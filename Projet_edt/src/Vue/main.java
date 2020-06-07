@@ -35,11 +35,12 @@ public class main {
         fe.setVisible(true);
         //Form fe = new Form(re);
         //fe.setVisible(true);
+<<<<<<< HEAD
         
+=======
+>>>>>>> master
         
-        
-       
-        
+
          
     }
     

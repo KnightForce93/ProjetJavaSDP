@@ -64,4 +64,22 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
     System.out.println("user id="+utilisateur.getId());
     return utilisateur; 
   }
+    
+    public Utilisateur find(String id){
+       Utilisateur utilisateur = new Utilisateur();      
+       String requete;
+       ResultSet resultat;
+      
+    try {
+        requete= "SELECT * FROM Utilisateur WHERE nom = '" + id + "'";
+        resultat=this.connect.remplirChampsRequete(requete);
+         if(resultat.first()){
+            utilisateur = new Utilisateur(resultat.getInt("id"),resultat.getString("email"),resultat.getString("passwd"), resultat.getString("nom"),resultat.getString("prenom"),resultat.getInt("droit"));
+         }
+        
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return utilisateur; 
+  }
 }

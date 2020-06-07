@@ -27,7 +27,7 @@ public class EtudiantDAO extends DAO<Etudiant>{
        ResultSet resultat;
       
     try {
-        requete= "SELECT * FROM Etudiant WHERE id = '" + id + "'";
+        requete= "SELECT * FROM Etudiant WHERE id_utilisateur = '" + id + "'";
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
             etudiant = new Etudiant(id,resultat.getInt("numero"),resultat.getInt("id_groupe"));

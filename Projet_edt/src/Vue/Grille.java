@@ -164,7 +164,7 @@ public class  Grille extends JFrame{
         JPanel cell[][]= new JPanel[6][13];
 
         
-        ArrayList<String> str= re.EdtEtudiant(1, user.getId());
+        ArrayList<String> str= re.EdtEtudiant(10, user.getId());
        
         Border blackline = BorderFactory.createLineBorder(Color.black);
         
@@ -234,13 +234,13 @@ public class  Grille extends JFrame{
     { 
         JPanel cell[][] = new JPanel[6][13];
         HashMap<String, Integer> table = new HashMap<String, Integer>();
-           table.put("8h30",0);
-           table.put("10h15",2);
-           table.put("12h",4);
-           table.put("13h45",6);
-           table.put("15h30",8);
-           table.put("17h15",10);
-           table.put("19h",12);
+           table.put("08:30:00",0);
+           table.put("10:15:00",2);
+           table.put("12:00:00",4);
+           table.put("13:45:00",6);
+           table.put("15:30:00",8);
+           table.put("17:15:00",10);
+           table.put("19:00:00",12);
            
         HashMap<String, Color> tableCouleur = new HashMap<String, Color>();
            tableCouleur.put("maths", new Color(246, 179, 130));
@@ -280,7 +280,7 @@ public class  Grille extends JFrame{
            }
        
            
-           if (i==Day-1 && j==(table.get(hd)))
+           if (i==(Day-1) && j==(table.get(hd)))
            {
                
              JLabel test = new JLabel("<html><div style=\" "

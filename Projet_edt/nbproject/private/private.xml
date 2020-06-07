@@ -3,14 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/Users/louisdonikian/Documents/5.%20ING3/Java/Projet/ProjetJavaSDP/Projet_edt/src/Vue/Recap_cours.java</file>
-            <file>file:/Users/louisdonikian/Documents/5.%20ING3/Java/Projet/ProjetJavaSDP/Projet_edt/src/DAO/UtilisateurDAO.java</file>
-            <file>file:/Users/louisdonikian/Documents/5.%20ING3/Java/Projet/ProjetJavaSDP/Projet_edt/src/Modele/entite/Salle.java</file>
-            <file>file:/Users/louisdonikian/Documents/5.%20ING3/Java/Projet/ProjetJavaSDP/Projet_edt/src/Vue/Statistiques.java</file>
-            <file>file:/Users/louisdonikian/Documents/5.%20ING3/Java/Projet/ProjetJavaSDP/Projet_edt/src/DAO/SalleDAO.java</file>
-            <file>file:/Users/louisdonikian/Documents/5.%20ING3/Java/Projet/ProjetJavaSDP/Projet_edt/src/Vue/Page.java</file>
-=======
             <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Vue/MyButton.java</file>
             <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/DAO/Seance_enseignantDAO.java</file>
             <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Type_cours.java</file>
@@ -50,7 +42,6 @@
             <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Cours.java</file>
             <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Modele/entite/Enseignant.java</file>
             <file>file:/C:/Users/wass1/Documents/ProjetJava/ProjetJavaSDP/Projet_edt/src/Vue/FirstPage.java</file>
->>>>>>> master
         </group>
     </open-files>
 </project-private>

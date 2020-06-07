@@ -5,8 +5,11 @@
  */
 package Vue;
 
+import DAO.Connexion;
+import Modele.MAJ.Recherche;
 import java.awt.*; 
 import java.awt.event.*; 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.*; 
 import org.jfree.chart.*;
@@ -27,7 +30,7 @@ public class Statistiques extends JFrame{
      *
      * @author J-M. DOUDOUX (inspiré de son exemple de code)
      */
-  public Statistiques(int choix) { 
+  public Statistiques(int choix, Recherche r) { 
     
       //femeture de la fenetre
       addWindowListener(new WindowAdapter() { 
@@ -41,18 +44,8 @@ public class Statistiques extends JFrame{
     setSize(500, 350); 
     
     if(choix==1) {
-            ArrayList<String> str= new ArrayList();
-            String n = "P305,70,2";
-            str.add(n);
-            n = "EM210,100,1";
-            str.add(n);
-            n = "P446,47,2";
-            str.add(n);
-            n = "C110,30,3";
-            str.add(n);
-            n = "G010,80,4";
-            str.add(n);
-
+           
+            ArrayList<String> str= r.SalleT();
             DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
 
             int nbplaces=0;
@@ -164,10 +157,17 @@ public class Statistiques extends JFrame{
     
   } 
 
-  public static void main(String args[]) { 
-    Statistiques bar = new Statistiques(1); 
+  public static void main(String args[]) throws SQLException, ClassNotFoundException { 
+     String nameDatabase = "projetjava";
+        String loginDatabase = "root"; 
+        //pour mac
+        String passwordDatabase = "";
+        
+        Connexion co = new Connexion(nameDatabase,loginDatabase, passwordDatabase);
+        Recherche re= new Recherche(co);
+    Statistiques bar = new Statistiques(1,re); 
     bar.setVisible(true); 
-    Statistiques camembert = new Statistiques(2); 
+    Statistiques camembert = new Statistiques(2,re); 
     camembert.setVisible(true); 
   } 
 }

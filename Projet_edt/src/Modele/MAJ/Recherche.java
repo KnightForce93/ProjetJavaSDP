@@ -28,6 +28,20 @@ public class Recherche {
          utilisateur=utilisateurdao.finds(email, mdp);
          return utilisateur;
     }
+    public ArrayList<String> SalleT(){
+         SalleDAO salledao= new SalleDAO(con);
+         Salle salle= new Salle();
+         String donnee;
+         ArrayList<String> Dsalle=new ArrayList();
+         ArrayList<Integer> Idsalles=new ArrayList();
+         Idsalles=salledao.findAll();
+         for(int id: Idsalles){
+           salle=salledao.find(id);
+           donnee=salle.getNom()+","+ salle.getCapacite()+","+  salle.getIdS();
+           Dsalle.add(donnee);
+         }
+         return Dsalle;
+    }
     public ArrayList<String> EdtEtudiant(int sem, int id){
          ArrayList<String> Edt= new ArrayList<String>();
          EtudiantDAO etudiantdao= new EtudiantDAO(con);
@@ -91,19 +105,28 @@ public class Recherche {
           donnee = seance.getDate()+",";
           donnee = donnee+ seance.getHD()+",";
           donnee = donnee+ seance.getHF()+",";
+          donnee = donnee+ listesalle.get(0);
           for (String ls:listesalle){
-          donnee=donnee+ ls+"+";    
+              if(!ls.equals(listesalle.get(0))){
+                donnee=donnee+"+"+ ls;  
+              }
           }
           donnee=donnee+ ",";
           donnee = donnee+ site.getNom()+",";
           donnee = donnee+ cours.getNom()+",";
           donnee = donnee+ type_cours.getNom()+",";
+          donnee = donnee+ listeenseignant.get(0);
           for (String le:listeenseignant){
-          donnee=donnee+ le+"+";    
+              if(!le.equals(listeenseignant.get(0))){
+                donnee=donnee+"+"+ le;  
+              }
           }
           donnee=donnee+ ",";
+          donnee = donnee+ listegroupe.get(0);
           for (String lg:listegroupe){
-          donnee=donnee+ lg+"+";    
+              if(!lg.equals(listegroupe.get(0))){
+                donnee=donnee+"+"+ lg;  
+              }
           }
           Edt.add(donnee);
           donnee="";
@@ -173,19 +196,29 @@ public class Recherche {
           donnee = seance.getDate()+",";
           donnee = donnee+ seance.getHD()+",";
           donnee = donnee+ seance.getHF()+",";
+          donnee = donnee+ listesalle.get(0);
           for (String ls:listesalle){
-          donnee=donnee+ ls+"+";    
+              if(!ls.equals(listesalle.get(0))){
+                donnee=donnee+"+"+ ls;  
+              }
+            
           }
           donnee=donnee+ ",";
           donnee = donnee+ site.getNom()+",";
           donnee = donnee+ cours.getNom()+",";
           donnee = donnee+ type_cours.getNom()+",";
+          donnee = donnee+ listeenseignant.get(0);
           for (String le:listeenseignant){
-          donnee=donnee+ le+"+";    
+              if(!le.equals(listeenseignant.get(0))){
+                donnee=donnee+"+"+ le;  
+              }
           }
           donnee=donnee+ ",";
+          donnee = donnee+ listegroupe.get(0);
           for (String lg:listegroupe){
-          donnee=donnee+ lg+"+";    
+              if(!lg.equals(listegroupe.get(0))){
+                donnee=donnee+"+"+ lg;  
+              }
           }
           Edt.add(donnee);
           donnee="";
@@ -255,19 +288,29 @@ public class Recherche {
           donnee = seance.getDate()+",";
           donnee = donnee+ seance.getHD()+",";
           donnee = donnee+ seance.getHF()+",";
+          donnee = donnee+ listesalle.get(0);
           for (String ls:listesalle){
-          donnee=donnee+ ls+"+";    
+              if(!ls.equals(listesalle.get(0))){
+                donnee=donnee+"+"+ ls;  
+              }
+            
           }
           donnee=donnee+ ",";
           donnee = donnee+ site.getNom()+",";
           donnee = donnee+ cours.getNom()+",";
           donnee = donnee+ type_cours.getNom()+",";
+          donnee = donnee+ listeenseignant.get(0);
           for (String le:listeenseignant){
-          donnee=donnee+ le+"+";    
+              if(!le.equals(listeenseignant.get(0))){
+                donnee=donnee+"+"+ le;  
+              }
           }
           donnee=donnee+ ",";
+          donnee = donnee+ listegroupe.get(0);
           for (String lg:listegroupe){
-          donnee=donnee+ lg+"+";    
+              if(!lg.equals(listegroupe.get(0))){
+                donnee=donnee+"+"+ lg;  
+              }
           }
           Edt.add(donnee);
           donnee="";
@@ -336,19 +379,29 @@ public class Recherche {
           donnee = seance.getDate()+",";
           donnee = donnee+ seance.getHD()+",";
           donnee = donnee+ seance.getHF()+",";
+          donnee = donnee+ listesalle.get(0);
           for (String ls:listesalle){
-          donnee=donnee+ ls+"+";    
+              if(!ls.equals(listesalle.get(0))){
+                donnee=donnee+"+"+ ls;  
+              }
+            
           }
           donnee=donnee+ ",";
           donnee = donnee+ site.getNom()+",";
           donnee = donnee+ cours.getNom()+",";
           donnee = donnee+ type_cours.getNom()+",";
+          donnee = donnee+ listeenseignant.get(0);
           for (String le:listeenseignant){
-          donnee=donnee+ le+"+";    
+              if(!le.equals(listeenseignant.get(0))){
+                donnee=donnee+"+"+ le;  
+              }
           }
           donnee=donnee+ ",";
+          donnee = donnee+ listegroupe.get(0);
           for (String lg:listegroupe){
-          donnee=donnee+ lg+"+";    
+              if(!lg.equals(listegroupe.get(0))){
+                donnee=donnee+"+"+ lg;  
+              }
           }
           Edt.add(donnee);
           donnee="";

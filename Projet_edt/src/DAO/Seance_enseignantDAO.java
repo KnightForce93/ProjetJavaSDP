@@ -29,7 +29,7 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
        ArrayList<Integer> liste= new ArrayList<Integer>();
       
     try {
-        requete= "SELECT * FROM Seance_enseignants WHERE id = '" + id + "'";
+        requete= "SELECT * FROM Seance_enseignants WHERE id_seance = '" + id + "'";
         resultat=this.connect.remplirChampsRequete(requete);
         while (resultat.next()) {
            liste.add(resultat.getInt("id_enseignant"));
@@ -50,7 +50,7 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
        liste = new ArrayList<>();
     try {
         requete= "SELECT id_seance FROM Seance_enseignants, Seance WHERE Seance_enseignants.id_seance=Seance.id";
-        requete=" AND Seance_enseignants.id_enseignant = '" + id_e+"' AND Seance.semaine = '"+ sem+"'";
+        requete=requete+" AND Seance_enseignants.id_enseignant = '" + id_e+"' AND Seance.semaine = '"+ sem+"'";
         resultat=this.connect.remplirChampsRequete(requete);
          
         while (resultat.next()) {

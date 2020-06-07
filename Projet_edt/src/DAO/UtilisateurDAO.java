@@ -30,7 +30,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
         requete= "SELECT * FROM Utilisateur WHERE id = '" + id + "'";
         resultat=this.connect.remplirChampsRequete(requete);
          if(resultat.first()){
-            utilisateur = new Utilisateur(id,resultat.getString("email"),resultat.getString("password"), resultat.getString("nom"),resultat.getString("prenom"),resultat.getInt("droit"));
+            utilisateur = new Utilisateur(id,resultat.getString("email"),resultat.getString("passwd"), resultat.getString("nom"),resultat.getString("prenom"),resultat.getInt("droit"));
          }
         
     } catch (SQLException e) {
@@ -45,7 +45,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
       
     try {
         
-        requete="SELECT * FROM utilisateur WHERE email='"+email+"'";
+        requete="SELECT * FROM utilisateur WHERE email='"+email+"' AND passwd='"+mdp+"'";
         resultat=this.connect.remplirChampsRequete(requete);
         
          while(resultat.next()){

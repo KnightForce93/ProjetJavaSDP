@@ -6,6 +6,7 @@
 package DAO;
 import Modele.entite.Salle;
 import java.sql.*;
+import java.util.ArrayList;
 /**
  *
  * @author wass1
@@ -38,4 +39,25 @@ public class SalleDAO extends DAO<Salle>{
     }
     return salle; 
   }
+  
+  public ArrayList<Integer> findAll(){    
+       String requete;
+       ResultSet resultat;
+       ArrayList<Integer> liste;
+       liste = new ArrayList<>();
+    try {
+        requete= "SELECT * FROM Salle ";
+        resultat=this.connect.remplirChampsRequete(requete);
+         
+        while (resultat.next()) {
+            
+            liste.add(resultat.getInt("id"));
+        }
+   
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return liste; 
+  }
+  
 }

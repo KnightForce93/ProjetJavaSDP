@@ -31,7 +31,7 @@ public class Seance_groupeDAO extends DAO<Seance_groupe>{
        liste = new ArrayList<>();
       
     try {
-        requete= "SELECT * FROM Seance_groupes WHERE id = '" + id + "'";
+        requete= "SELECT * FROM Seance_groupes WHERE id_seance = '" + id + "'";
         resultat=this.connect.remplirChampsRequete(requete);
          while (resultat.next()) {
            liste.add(resultat.getInt("id_groupe"));
@@ -52,8 +52,8 @@ public class Seance_groupeDAO extends DAO<Seance_groupe>{
        ArrayList<Integer> liste;
        liste = new ArrayList<>();
     try {
-        requete= "SELECT id_seance FROM Seance_groupes, Seance WHERE Seance_groupes.id_seance=Seance.id";
-        requete=" AND Seance_groupes.id_groupe = '" + id_g+"' AND Seance.semaine = '"+ sem +"'";
+        requete= "SELECT id_seance FROM seance_groupes, seance WHERE seance_groupes.id_seance=seance.id";
+        requete=requete+" AND seance_groupes.id_groupe='" + id_g+"' AND seance.semaine='"+ sem +"'";
         resultat=this.connect.remplirChampsRequete(requete);
          
         while (resultat.next()) {

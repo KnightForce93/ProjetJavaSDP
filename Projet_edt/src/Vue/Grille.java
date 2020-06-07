@@ -66,6 +66,7 @@ public class  Grille extends JFrame{
         createDay(left);
         createCentre();
         
+        
 
         
         content.add(top, BorderLayout.NORTH);
@@ -178,7 +179,6 @@ public class  Grille extends JFrame{
         ArrayList<String> str = new ArrayList<String>();
         JPanel cell[][]= new JPanel[6][13];
         int sem = Integer.parseInt(this.semaine);
-        System.out.println(sem);
         
         
         if(!nom.equals(""))
@@ -189,21 +189,24 @@ public class  Grille extends JFrame{
            
            if(obj.equals("etudiant"))
            {
-               str= re.EdtEtudiant(sem, user.getId()); 
+               str= re.EdtEtudiant(sem, name);
+               for(String s:str){
+                   System.out.println(s);
+               }
                
            }
            if(obj.equals("enseignant"))
            {
-               str= re.EdtEnseignant(sem, user.getId()); 
+               str= re.EdtEnseignant(sem, name); 
            }
            if(obj.equals("salle"))
            {
-               str= re.EdtSalle(sem, user.getId()); 
+               str= re.EdtSalle(sem, name); 
                
            }
            if(obj.equals("groupe"))
            {
-               str= re.Edtgroupe(sem, user.getId()); 
+               str= re.Edtgroupe(sem, name); 
                
            }
            

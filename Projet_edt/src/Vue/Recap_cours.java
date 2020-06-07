@@ -5,7 +5,7 @@
  */
 package Vue;
 
-import static Vue.Page.creationSemaines;
+//import static Vue.Page.creationSemaines;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -59,7 +59,7 @@ public class Recap_cours extends JFrame{
         
          // ajout des objets graphqiues dans les panneaux
          //p0.setBackground(new Color(81, 133, 169));
-        TopBar tp = new TopBar(p0, p01);
+        //TopBar tp = new TopBar(p0, p01);
 
        createTable(p2);
         

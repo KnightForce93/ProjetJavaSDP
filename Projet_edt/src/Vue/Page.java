@@ -488,8 +488,8 @@ public class Page extends JFrame{
         recherche = txt.getText();
         nom=recherche+","+"etudiant";
         
-      g = new Grille(p2, user, re, this.semaine, nom);
-      g.paint();
+      g = new Grille(p2, user, re, semaine, nom);
+      this.g.paint();
       
     }
       private void btnEnseignant ( ActionEvent event )
@@ -499,7 +499,7 @@ public class Page extends JFrame{
         recherche = txt.getText();
         nom=recherche+","+"enseignant";
         g = new Grille(p2, user, re, this.semaine, nom);
-        g.paint();
+        this.g.paint();
    
     }
        private void btnSalle ( ActionEvent event )
@@ -510,7 +510,7 @@ public class Page extends JFrame{
         nom=recherche+","+"salle";
         
         g = new Grille(p2, user, re, this.semaine, nom);
-        g.paint();
+        this.g.paint();
    
     }
         private void btnGroupe ( ActionEvent event )
@@ -521,6 +521,6 @@ public class Page extends JFrame{
         nom=recherche+","+"groupe";
         
         g = new Grille(p2, user, re, this.semaine, nom);
-        g.paint();
+        this.g.paint();
     }
 }

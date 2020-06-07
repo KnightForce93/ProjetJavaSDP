@@ -45,6 +45,23 @@ public class SalleDAO extends DAO<Salle>{
     }
     return salle; 
   }
+  public Salle find(String id){
+      Salle salle = new Salle();      
+       String requete;
+       ResultSet resultat;
+      
+    try {
+        requete= "SELECT * FROM Salle WHERE nom = '" + id + "'";
+        resultat=this.connect.remplirChampsRequete(requete);
+         if(resultat.first()){
+            salle= new Salle(resultat.getInt("id"),resultat.getString("nom"),resultat.getInt("capacite"),resultat.getInt("id_site"));
+         }
+        
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return salle; 
+  }
   /**
      * Méthode qui permet de trouver toutes les salles dans la BDD
      *

@@ -344,8 +344,8 @@ public class  Grille extends JFrame{
            {
                
              JLabel test = new JLabel("<html><div style=\" "
-                     + "color: white;\">\n" +
-                            salle +" "+ site +"<br>"+ cours+"<br>" + prof+"<br>" + grp + "<br>" +
+                     + "color: white; text-align:center;\">\n" +
+                            salle +" "+ site +"<br><b>"+ cours+"</b><br>" + prof+"<br>" + grp + "<br>" + typeCours + "<br>"+
                         "</div></html>");
              
              c.setBackground(Color.red);

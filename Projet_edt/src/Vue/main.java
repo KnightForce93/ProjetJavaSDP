@@ -31,10 +31,11 @@ public class main {
         Connexion co = new Connexion(nameDatabase,loginDatabase, passwordDatabase);
         Recherche re= new Recherche(co);
                 
-        //FirstPage fe = new FirstPage(re);
-        //fe.setVisible(true);
-        Form fe = new Form(re);
+        FirstPage fe = new FirstPage(re);
         fe.setVisible(true);
+        //Form fe = new Form(re);
+        //fe.setVisible(true);
+        
         
         
        

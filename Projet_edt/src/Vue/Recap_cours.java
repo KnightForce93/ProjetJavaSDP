@@ -5,7 +5,7 @@
  */
 package Vue;
 
-import static Vue.Page.creationSemaines;
+//import static Vue.Page.creationSemaines;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;

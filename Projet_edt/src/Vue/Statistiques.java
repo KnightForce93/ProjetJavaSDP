@@ -36,7 +36,7 @@ public class Statistiques extends JFrame{
       addWindowListener(new WindowAdapter() { 
       public void windowClosing(WindowEvent e) { 
         dispose(); 
-        System.exit(0); 
+       // System.exit(0); 
       } 
     }); 
     panel = new JPanel(new BorderLayout()); 

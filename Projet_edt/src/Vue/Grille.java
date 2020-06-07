@@ -66,7 +66,6 @@ public class  Grille extends JFrame{
         createDay(left);
         createCentre();
         
-        
 
         
         content.add(top, BorderLayout.NORTH);
@@ -179,6 +178,7 @@ public class  Grille extends JFrame{
         ArrayList<String> str = new ArrayList<String>();
         JPanel cell[][]= new JPanel[6][13];
         int sem = Integer.parseInt(this.semaine);
+        System.out.println(sem);
         
         
         if(!nom.equals(""))
@@ -189,24 +189,21 @@ public class  Grille extends JFrame{
            
            if(obj.equals("etudiant"))
            {
-               str= re.EdtEtudiant(sem, name);
-               for(String s:str){
-                   System.out.println(s);
-               }
+               str= re.EdtEtudiant(sem, user.getId()); 
                
            }
            if(obj.equals("enseignant"))
            {
-               str= re.EdtEnseignant(sem, name); 
+               str= re.EdtEnseignant(sem, user.getId()); 
            }
            if(obj.equals("salle"))
            {
-               str= re.EdtSalle(sem, name); 
+               str= re.EdtSalle(sem, user.getId()); 
                
            }
            if(obj.equals("groupe"))
            {
-               str= re.Edtgroupe(sem, name); 
+               str= re.Edtgroupe(sem, user.getId()); 
                
            }
            
@@ -306,8 +303,12 @@ public class  Grille extends JFrame{
            table.put("19:00:00",12);
            
         HashMap<String, Color> tableCouleur = new HashMap<String, Color>();
-           tableCouleur.put("maths", new Color(246, 179, 130));
-           tableCouleur.put("anglais", new Color(142, 246, 130));
+           tableCouleur.put("Analyse", new Color(45, 89, 133));
+           tableCouleur.put("English", new Color(54, 133, 45));
+           tableCouleur.put("Probabilités", new Color(89, 197, 192));
+           tableCouleur.put("Electronique", new Color(149, 60, 53));
+           tableCouleur.put("Droit", new Color(109, 45, 133));
+           tableCouleur.put("POO Java", new Color(145, 149, 53));
          
         
         for(String s:str){
@@ -351,7 +352,8 @@ public class  Grille extends JFrame{
                             salle +" "+ site +"<br>"+ cours+"<br>" + prof+"<br>" + grp + "<br>" +
                         "</div></html>");
              
-             c.setBackground(Color.red);
+             //c.setBackground(Color.red);
+             c.setBackground(tableCouleur.get(cours));
              c.add(test);
              
              System.out.println("test");

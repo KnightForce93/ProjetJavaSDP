@@ -38,15 +38,17 @@ public class  Grille extends JFrame{
     private JButton btn1, btn2;
     private Utilisateur user;
     private Recherche re;
-    private String semaine;
+    private String semaine, nom;
+   
 
     
-    public Grille(JPanel content, Utilisateur u, Recherche r, String semaine)
+    public Grille(JPanel content, Utilisateur u, Recherche r, String semaine, String nom)
     {
         content.setLayout(new BorderLayout());
         
         user = u;
         re = r;
+        this.nom = nom;
         this.semaine = semaine;
         //panneaux
         top = new JPanel();
@@ -171,11 +173,45 @@ public class  Grille extends JFrame{
     
     public void createCentre()
     {   
+        
         int droit = user.getDroit();
         ArrayList<String> str = new ArrayList<String>();
         JPanel cell[][]= new JPanel[6][13];
         int sem = Integer.parseInt(this.semaine);
         System.out.println(sem);
+        
+        
+        if(!nom.equals(""))
+        {
+            String[] parts = nom.split(",");
+           String name = parts[0];
+           String obj = parts[1];
+           
+           if(obj.equals("etudiant"))
+           {
+               str= re.EdtEtudiant(sem, user.getId()); 
+               
+           }
+           if(obj.equals("enseignant"))
+           {
+               str= re.EdtEnseignant(sem, user.getId()); 
+           }
+           if(obj.equals("salle"))
+           {
+               str= re.EdtSalle(sem, user.getId()); 
+               
+           }
+           if(obj.equals("groupe"))
+           {
+               str= re.Edtgroupe(sem, user.getId()); 
+               
+           }
+           
+        }
+        else
+        {
+            
+       
         
         //Etudiant
         if(droit == 4)
@@ -186,6 +222,8 @@ public class  Grille extends JFrame{
         else if(droit == 3)
         {
            str= re.EdtEnseignant(sem, user.getId());  
+        }
+        
         }
        
         Border blackline = BorderFactory.createLineBorder(Color.black);

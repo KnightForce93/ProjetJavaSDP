@@ -38,14 +38,17 @@ public class TopBar extends JFrame{
     private Utilisateur user;
     private JTextField txt;
     private String nom;
+    private Grille g;
     
      //Constructeur 
-    public TopBar (JPanel contentPanel1, JPanel contentPanel2, Utilisateur user)
+    public TopBar (JPanel contentPanel1, JPanel contentPanel2, Utilisateur user, Grille g)
     {
         p0 = new JPanel();
         p1 = new JPanel();
         
         this.user = user;
+        this.g = g;
+        
         
         p0.setLayout(new GridLayout(1, 1));
         
@@ -160,22 +163,7 @@ public class TopBar extends JFrame{
             
              
             }
-            
-            
-            
-            //pour décaler les boutons à droite
-           /* r = new JMenuItem();
-            r.setPreferredSize(new Dimension(820, 20));
-            r.setBackground(new Color(250, 250, 250));
-            gbc.gridx = 2;
-            gbc.gridy = 0;
-            menuBar1.add(r, gbc); */
-
-           
-      
-
-        
-        
+     
         edt.addActionListener( new ActionListener()
         {
             public void actionPerformed(ActionEvent e) {

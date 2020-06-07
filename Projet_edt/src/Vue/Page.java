@@ -324,6 +324,14 @@ public class Page extends JFrame{
                gbc.gridwidth = 1;
                menuBar1.add(stat, gbc); 
                
+               stat.addActionListener( new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e) {
+                     btnStatistiques( e );
+                    }
+                });
+               
+               
              creationSeance = new JMenuItem("<html>"
                 + "<div style=\"color: green; \">"
                 + "Création Séance </div></html>");
@@ -381,6 +389,12 @@ public class Page extends JFrame{
    
     }
     
+    private void btnStatistiques( ActionEvent event)
+    {
+        System.out.println("EDT bouton cliqué !");
+        Statistiques stat = new Statistiques(2, re);
+        stat.setVisible(true);
+    }
  
     
      private JMenuBar createMenuBar()
@@ -488,8 +502,8 @@ public class Page extends JFrame{
         recherche = txt.getText();
         nom=recherche+","+"etudiant";
         
-      g = new Grille(p2, user, re, semaine, nom);
-      this.g.paint();
+      g = new Grille(p2, user, re, this.semaine, nom);
+      g.paint();
       
     }
       private void btnEnseignant ( ActionEvent event )
@@ -499,7 +513,7 @@ public class Page extends JFrame{
         recherche = txt.getText();
         nom=recherche+","+"enseignant";
         g = new Grille(p2, user, re, this.semaine, nom);
-        this.g.paint();
+        g.paint();
    
     }
        private void btnSalle ( ActionEvent event )
@@ -510,7 +524,7 @@ public class Page extends JFrame{
         nom=recherche+","+"salle";
         
         g = new Grille(p2, user, re, this.semaine, nom);
-        this.g.paint();
+        g.paint();
    
     }
         private void btnGroupe ( ActionEvent event )
@@ -521,6 +535,6 @@ public class Page extends JFrame{
         nom=recherche+","+"groupe";
         
         g = new Grille(p2, user, re, this.semaine, nom);
-        this.g.paint();
+        g.paint();
     }
 }

@@ -54,39 +54,6 @@ public class Recherche {
          return Dsalle;
     }
     
-    public void MAJens(int id_seance, String ensAv, String ensAp) {
-        UtilisateurDAO ensDAO = new UtilisateurDAO(con); 
-        Utilisateur ens1 = new Utilisateur();
-        Utilisateur ens2 = new Utilisateur();
-        
-        ens1=ensDAO.find(ensAv);
-        ens2=ensDAO.find(ensAp);
-        
-        Seance_enseignantDAO sen = new Seance_enseignantDAO(con);
-        sen.updateEns(id_seance, ens1.getId(), ens2.getId());
-    }
-    public void MAJgrp(int id_seance, String grpAv, String grpAp) {
-        GroupeDAO grpDAO = new GroupeDAO(con); 
-        Groupe grp1 = new Groupe();
-        Groupe grp2 = new Groupe();
-        
-        grp1=grpDAO.find(grpAv);
-        grp2=grpDAO.find(grpAp);
-        
-        Seance_groupeDAO grp = new Seance_groupeDAO(con);
-        grp.updateGrp(id_seance, grp1.getId(), grp2.getId());
-    }
-    public void MAJsll(int id_seance, String sllAv, String sllAp) {
-        SalleDAO sllDAO = new SalleDAO(con); 
-        Salle sll1 = new Salle();
-        Salle sll2 = new Salle();
-        
-        sll1=sllDAO.find(sllAv);
-        sll2=sllDAO.find(sllAp);
-        
-        Seance_sallesDAO sll = new Seance_sallesDAO(con);
-        sll.updateSalle(id_seance, sll1.getId(), sll2.getId());
-    }
     /**
      * Permet de créer un chaine avec toutes les infos des salles
      *
@@ -144,9 +111,11 @@ public class Recherche {
          Site site= new Site();
          String donnee="";
          ArrayList<String> listesalle;
-         listesalle = new ArrayList<>();
+         ArrayList<String> listeenseignant;
+         ArrayList<String> listegroupe;
          for( int i: Liste_seance){
-             
+         
+         listesalle = new ArrayList<>();
           seance=seanceDAO.find(i);
           seance_salles=seance_sallesdao.find(i);
           for(int ls:seance_salles.getId_salle()){
@@ -157,7 +126,7 @@ public class Recherche {
           
           cours=coursdao.find(seance.getIdC());
           type_cours=type_coursdao.find(seance.getIdT());
-          ArrayList<String> listeenseignant;
+          
           listeenseignant= new ArrayList<>();
           seance_enseignant=seance_enseignantdao.find(i);
           
@@ -166,7 +135,7 @@ public class Recherche {
           listeenseignant.add(utilisateur.getNom());
           }
          
-          ArrayList<String> listegroupe;
+          
           listegroupe= new ArrayList<>();
           seance_groupe=seance_groupedao.find(i);
           for(int le:seance_groupe.getId_groupe()){
@@ -200,6 +169,9 @@ public class Recherche {
                 donnee=donnee+"+"+ lg;  
               }
           }
+          donnee = donnee+",";
+          donnee = donnee+ i;
+          
           Edt.add(donnee);
           donnee="";
          }
@@ -209,6 +181,7 @@ public class Recherche {
          UtilisateurDAO utilisateurdao= new UtilisateurDAO(con);
          Utilisateur utilisateur= new Utilisateur();
          utilisateur=utilisateurdao.find(nom);
+         
          ArrayList<String> Edt= new ArrayList<String>();
          EtudiantDAO etudiantdao= new EtudiantDAO(con);
          Etudiant etudiant = new Etudiant();
@@ -237,9 +210,12 @@ public class Recherche {
          Site site= new Site();
          String donnee="";
          ArrayList<String> listesalle;
-         listesalle = new ArrayList<>();
+         ArrayList<String> listegroupe;
+         ArrayList<String> listeenseignant;
+         
          for( int i: Liste_seance){
              
+          listesalle = new ArrayList<>();
           seance=seanceDAO.find(i);
           seance_salles=seance_sallesdao.find(i);
           for(int ls:seance_salles.getId_salle()){
@@ -250,16 +226,18 @@ public class Recherche {
           
           cours=coursdao.find(seance.getIdC());
           type_cours=type_coursdao.find(seance.getIdT());
-          ArrayList<String> listeenseignant;
+          
           listeenseignant= new ArrayList<>();
           seance_enseignant=seance_enseignantdao.find(i);
+          
+          
           
           for(int le:seance_enseignant.getId_enseignant()){
           utilisateur=utilisateurdao.find(le);
           listeenseignant.add(utilisateur.getNom());
           }
          
-          ArrayList<String> listegroupe;
+          
           listegroupe= new ArrayList<>();
           seance_groupe=seance_groupedao.find(i);
           for(int le:seance_groupe.getId_groupe()){
@@ -293,6 +271,9 @@ public class Recherche {
                 donnee=donnee+"+"+ lg;  
               }
           }
+          donnee = donnee+",";
+          donnee = donnee+ i;
+          
           Edt.add(donnee);
           donnee="";
          }
@@ -334,8 +315,11 @@ public class Recherche {
          Seance_groupeDAO seance_groupedao= new Seance_groupeDAO(con);
          String donnee="";
          ArrayList<String> listesalle;
-         listesalle = new ArrayList<>();
+         ArrayList<String> listeenseignant;
+         ArrayList<String> listegroupe;
+         
          for( int i: Liste_seance){
+             listesalle = new ArrayList<>();
           seance=seanceDAO.find(i);
           seance_salles=seance_sallesdao.find(i);
          
@@ -348,7 +332,7 @@ public class Recherche {
           cours=coursdao.find(seance.getIdC());
           type_cours=type_coursdao.find(seance.getIdT());
           
-          ArrayList<String> listeenseignant;
+          
           listeenseignant= new ArrayList<>();
           seance_enseignant=seance_enseignantdao.find(i);
           for(int le:seance_enseignant.getId_enseignant()){
@@ -356,7 +340,7 @@ public class Recherche {
           listeenseignant.add(utilisateur.getNom());
           }
           
-          ArrayList<String> listegroupe;
+          
           listegroupe= new ArrayList<>();
           seance_groupe=seance_groupedao.find(i);
           for(int lg:seance_groupe.getId_groupe()){
@@ -392,6 +376,9 @@ public class Recherche {
                 donnee=donnee+"+"+ lg;  
               }
           }
+          donnee = donnee+",";
+          donnee = donnee+ i;
+          
           Edt.add(donnee);
           donnee="";
          }
@@ -401,6 +388,7 @@ public class Recherche {
          UtilisateurDAO utilisateurdao= new UtilisateurDAO(con);
          Utilisateur utilisateur= new Utilisateur();
          utilisateur=utilisateurdao.find(nom);
+         
          ArrayList<String> Edt= new ArrayList<String>();
          Seance_enseignantDAO seance_enseignantdao= new Seance_enseignantDAO(con);
          Seance_enseignant seance_enseignant = new Seance_enseignant();
@@ -427,8 +415,11 @@ public class Recherche {
          Seance_groupeDAO seance_groupedao= new Seance_groupeDAO(con);
          String donnee="";
          ArrayList<String> listesalle;
-         listesalle = new ArrayList<>();
+         ArrayList<String> listeenseignant;
+         ArrayList<String> listegroupe;
+         
          for( int i: Liste_seance){
+             listesalle = new ArrayList<>();
           seance=seanceDAO.find(i);
           seance_salles=seance_sallesdao.find(i);
          
@@ -441,7 +432,7 @@ public class Recherche {
           cours=coursdao.find(seance.getIdC());
           type_cours=type_coursdao.find(seance.getIdT());
           
-          ArrayList<String> listeenseignant;
+          
           listeenseignant= new ArrayList<>();
           seance_enseignant=seance_enseignantdao.find(i);
           for(int le:seance_enseignant.getId_enseignant()){
@@ -449,7 +440,7 @@ public class Recherche {
           listeenseignant.add(utilisateur.getNom());
           }
           
-          ArrayList<String> listegroupe;
+          
           listegroupe= new ArrayList<>();
           seance_groupe=seance_groupedao.find(i);
           for(int lg:seance_groupe.getId_groupe()){
@@ -485,6 +476,9 @@ public class Recherche {
                 donnee=donnee+"+"+ lg;  
               }
           }
+          donnee = donnee+",";
+          donnee = donnee+ i;
+          
           Edt.add(donnee);
           donnee="";
          }
@@ -527,9 +521,12 @@ public class Recherche {
          Seance_groupeDAO seance_groupedao= new Seance_groupeDAO(con);
          String donnee="";
          ArrayList<String> listesalle;
-         listesalle = new ArrayList<>();
+         ArrayList<String> listeenseignant;
+         ArrayList<String> listegroupe;
+         
          
          for( int i: Liste_seance){
+             listesalle = new ArrayList<>();
           seance=seanceDAO.find(i);
           seance_salles=seance_sallesdao.find(i);
           for(int ls:seance_salles.getId_salle()){
@@ -541,7 +538,7 @@ public class Recherche {
           cours=coursdao.find(seance.getIdC());
           type_cours=type_coursdao.find(seance.getIdT());
           
-          ArrayList<String> listeenseignant;
+          
           listeenseignant= new ArrayList<>();
           seance_enseignant=seance_enseignantdao.find(i);
           for(int le:seance_enseignant.getId_enseignant()){
@@ -549,7 +546,7 @@ public class Recherche {
           listeenseignant.add(utilisateur.getNom());
           }
          
-           ArrayList<String> listegroupe;
+           
           listegroupe= new ArrayList<>();
           seance_groupe=seance_groupedao.find(i);
           for(int lg:seance_groupe.getId_groupe()){
@@ -584,6 +581,9 @@ public class Recherche {
                 donnee=donnee+"+"+ lg;  
               }
           }
+          donnee = donnee+",";
+          donnee = donnee+ i;
+          
           Edt.add(donnee);
           donnee="";
          }
@@ -594,6 +594,7 @@ public class Recherche {
          SalleDAO Salledao= new SalleDAO(con);
          Salle salle= new Salle();
          salle= Salledao.find(nom);
+        
          Seance_sallesDAO seance_sallesdao= new Seance_sallesDAO(con);
          ArrayList<Integer> Liste_seance = new ArrayList<Integer>();
          Liste_seance=seance_sallesdao.findS(salle.getId(),sem);
@@ -618,9 +619,11 @@ public class Recherche {
          Seance_groupeDAO seance_groupedao= new Seance_groupeDAO(con);
          String donnee="";
          ArrayList<String> listesalle;
-         listesalle = new ArrayList<>();
+          ArrayList<String> listeenseignant;
+          ArrayList<String> listegroupe;
          
          for( int i: Liste_seance){
+             listesalle = new ArrayList<>();
           seance=seanceDAO.find(i);
           seance_salles=seance_sallesdao.find(i);
           for(int ls:seance_salles.getId_salle()){
@@ -632,7 +635,7 @@ public class Recherche {
           cours=coursdao.find(seance.getIdC());
           type_cours=type_coursdao.find(seance.getIdT());
           
-          ArrayList<String> listeenseignant;
+         
           listeenseignant= new ArrayList<>();
           seance_enseignant=seance_enseignantdao.find(i);
           for(int le:seance_enseignant.getId_enseignant()){
@@ -640,7 +643,7 @@ public class Recherche {
           listeenseignant.add(utilisateur.getNom());
           }
          
-           ArrayList<String> listegroupe;
+           
           listegroupe= new ArrayList<>();
           seance_groupe=seance_groupedao.find(i);
           for(int lg:seance_groupe.getId_groupe()){
@@ -675,6 +678,9 @@ public class Recherche {
                 donnee=donnee+"+"+ lg;  
               }
           }
+          donnee = donnee+",";
+          donnee = donnee+ i;
+          
           Edt.add(donnee);
           donnee="";
          }
@@ -717,9 +723,11 @@ public class Recherche {
          Site site= new Site();
          String donnee="";
          ArrayList<String> listesalle;
-         listesalle = new ArrayList<>();
+         ArrayList<String> listeenseignant;
+         ArrayList<String> listegroupe;
+         
          for( int i: Liste_seance){
-             
+             listesalle = new ArrayList<>();
           seance=seanceDAO.find(i);
           seance_salles=seance_sallesdao.find(i);
           for(int ls:seance_salles.getId_salle()){
@@ -730,7 +738,7 @@ public class Recherche {
           
           cours=coursdao.find(seance.getIdC());
           type_cours=type_coursdao.find(seance.getIdT());
-          ArrayList<String> listeenseignant;
+          
           listeenseignant= new ArrayList<>();
           seance_enseignant=seance_enseignantdao.find(i);
           
@@ -739,7 +747,7 @@ public class Recherche {
           listeenseignant.add(utilisateur.getNom());
           }
          
-          ArrayList<String> listegroupe;
+          
           listegroupe= new ArrayList<>();
           seance_groupe=seance_groupedao.find(i);
           for(int le:seance_groupe.getId_groupe()){
@@ -774,6 +782,9 @@ public class Recherche {
                 donnee=donnee+"+"+ lg;  
               }
           }
+          donnee = donnee+",";
+          donnee = donnee+ i;
+          
           Edt.add(donnee);
           donnee="";
          }
@@ -785,6 +796,7 @@ public class Recherche {
          GroupeDAO groupedao= new GroupeDAO(con);
          Groupe groupe = new Groupe();
          groupe=groupedao.find(nom);
+        
          Seance_groupeDAO seance_groupedao= new Seance_groupeDAO(con);
          ArrayList<Integer> Liste_seance = new ArrayList<Integer>();
          Liste_seance=seance_groupedao.findS(groupe.getId(),sem);
@@ -807,9 +819,11 @@ public class Recherche {
          Site site= new Site();
          String donnee="";
          ArrayList<String> listesalle;
-         listesalle = new ArrayList<>();
+         ArrayList<String> listeenseignant;
+         ArrayList<String> listegroupe;
+         
          for( int i: Liste_seance){
-             
+             listesalle = new ArrayList<>();
           seance=seanceDAO.find(i);
           seance_salles=seance_sallesdao.find(i);
           for(int ls:seance_salles.getId_salle()){
@@ -820,7 +834,7 @@ public class Recherche {
           
           cours=coursdao.find(seance.getIdC());
           type_cours=type_coursdao.find(seance.getIdT());
-          ArrayList<String> listeenseignant;
+          
           listeenseignant= new ArrayList<>();
           seance_enseignant=seance_enseignantdao.find(i);
           
@@ -829,7 +843,7 @@ public class Recherche {
           listeenseignant.add(utilisateur.getNom());
           }
          
-          ArrayList<String> listegroupe;
+          
           listegroupe= new ArrayList<>();
           seance_groupe=seance_groupedao.find(i);
           for(int le:seance_groupe.getId_groupe()){
@@ -864,6 +878,9 @@ public class Recherche {
                 donnee=donnee+"+"+ lg;  
               }
           }
+          donnee = donnee+",";
+          donnee = donnee+ i;
+          
           Edt.add(donnee);
           donnee="";
          }

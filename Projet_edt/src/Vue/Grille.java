@@ -190,7 +190,10 @@ public class  Grille extends JFrame{
            if(obj.equals("etudiant"))
            {
                str= re.EdtEtudiant(sem, name); 
-               
+               for(String s:str)
+               {
+                   System.out.println(s);
+               }
            }
            if(obj.equals("enseignant"))
            {
@@ -293,6 +296,7 @@ public class  Grille extends JFrame{
     public void createSeance(int i, int j, JPanel c, ArrayList<String> str)
     { 
         JPanel cell[][] = new JPanel[6][13];
+        JLabel test;
         HashMap<String, Integer> table = new HashMap<String, Integer>();
            table.put("08:30:00",0);
            table.put("10:15:00",2);
@@ -324,6 +328,7 @@ public class  Grille extends JFrame{
            String typeCours = parts[6]; 
            String prof = parts[7]; 
            String grp = parts[8]; 
+           String id = parts[9];
            
            String[] datesplit = date.split("-");
           
@@ -346,11 +351,23 @@ public class  Grille extends JFrame{
            
            if (i==(Day-1) && j==(table.get(hd)))
            {
-               
-             JLabel test = new JLabel("<html><div style=\" "
+               if(user.getDroit() != 1)
+               {
+                  test = new JLabel("<html><div style=\" "
                      + "color: white; text-align:center;\">\n" +
                             salle +" "+ site +"<br><b>"+ cours+"</b><br>" + prof+"<br>" + grp + "<br>" + typeCours + "<br>"+
                         "</div></html>");
+                   
+               }
+               else
+               {
+                   test = new JLabel("<html><div style=\" "
+                     + "color: white; text-align:center;\">\n"+ id + "<br>" +
+                            salle +" "+ site +"<br><b>"+ cours+"</b><br>" + prof+"<br>" + grp + "<br>" + typeCours + "<br>"+
+                        "</div></html>");
+               }
+               
+           
              
              //c.setBackground(Color.red);
              c.setBackground(tableCouleur.get(cours));

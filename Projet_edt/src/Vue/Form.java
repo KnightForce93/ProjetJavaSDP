@@ -39,7 +39,7 @@ public class Form extends JFrame{
     {
         this.setTitle("Création Séance");
         this.setSize(800, 600);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.r = re;
 
@@ -143,19 +143,7 @@ public class Form extends JFrame{
              + "<h3>Groupe </h3></div></html>");
       groupe.setPreferredSize(new Dimension(120, 40));
       
-      /*
-      btnco.addActionListener( new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    connexionTest( e );
-                } catch (SQLException ex) {
-                    
-                } catch (ClassNotFoundException ex) {
-                    
-                }
-            }
-        });*/
+     
 
      //L'objet servant à positionner les composants
     GridBagConstraints gbc = new GridBagConstraints();
@@ -293,27 +281,82 @@ public class Form extends JFrame{
       btnsem = new MyButton("<html>"
              + "<div style=\"color: black;\">"
              + "Modifier semaine</div></html>");
+      btnsem.addActionListener( new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e) {
+                     btnSem( e );
+                    }
+                });
+      
+      
       btndate = new MyButton("<html>"
              + "<div style=\"color: black;\">"
              + "Modifier date</div></html>");
+      
+      btndate.addActionListener( new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e) {
+                     btnDate( e );
+                    }
+                });
       btnhf = new MyButton("<html>"
              + "<div style=\"color: black;\">"
              + "Modifier heure de fin</div></html>");
+      
+      btnhf.addActionListener( new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e) {
+                     btnHf( e );
+                    }
+                });
       btnhd = new MyButton("<html>"
              + "<div style=\"color: black;\">"
              + "Modifier heure de début</div></html>");
+      
+       btnhd.addActionListener( new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e) {
+                     btnHd( e );
+                    }
+                });
       btnetat = new MyButton("<html>"
              + "<div style=\"color: black;\">"
              + "Modifier état</div></html>");
+      btnetat.addActionListener( new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e) {
+                     btnEtat( e );
+                    }
+                });
       btnprof = new MyButton("<html>"
              + "<div style=\"color: black;\">"
              + "Modifier enseignant</div></html>");
+      btnprof.addActionListener( new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e) {
+                     btnProf( e );
+                    }
+                });
       btnsalle = new MyButton("<html>"
              + "<div style=\"color: black;\">"
              + "Modifier salle</div></html>");
+      
+      btnsalle.addActionListener( new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e) {
+                     btnSalle( e );
+                    }
+                });
+      
       btngroupe = new MyButton("<html>"
              + "<div style=\"color: black;\">"
              + "Modifier groupe</div></html>");
+      btngroupe.addActionListener( new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e) {
+                     btnGroupe( e );
+                    }
+                });
       
       id = new JLabel("<html>"
              + "<div style=\"color: white; text-align: center;\">"
@@ -359,19 +402,7 @@ public class Form extends JFrame{
              + "<h3>Groupe </h3></div></html>");
       groupe.setPreferredSize(new Dimension(120, 40));
       
-      /*
-      btnco.addActionListener( new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    connexionTest( e );
-                } catch (SQLException ex) {
-                    
-                } catch (ClassNotFoundException ex) {
-                    
-                }
-            }
-        });*/
+     
 
      //L'objet servant à positionner les composants
     GridBagConstraints gbc = new GridBagConstraints();
@@ -499,5 +530,61 @@ public class Form extends JFrame{
     gbc.gridwidth = GridBagConstraints.REMAINDER;
       
    }
+   
+   private void btnSem ( ActionEvent event )
+    { 
+        String semaine;
+        semaine = semainetxt.getText();
+        
+    }
+   
+   private void btnDate ( ActionEvent event )
+    { 
+        String date;
+        date = datetxt.getText();
+        
+    }
+   
+   private void btnHf ( ActionEvent event )
+    { 
+        String h_f;
+        h_f = hftxt.getText();
+        
+    }
+   
+   private void btnHd ( ActionEvent event )
+    { 
+        String h_d;
+        h_d = hdtxt.getText();
+        
+    }
+   
+   private void btnEtat ( ActionEvent event )
+    { 
+        String etat;
+        etat = etattxt.getText();
+        
+    }
+   
+   private void btnProf ( ActionEvent event )
+    { 
+        String prof;
+        prof = proftxt.getText();
+        
+    }
+   
+   private void btnSalle ( ActionEvent event )
+    { 
+        String salle;
+        salle = salletxt.getText();
+        
+    }
+   
+   private void btnGroupe ( ActionEvent event )
+    { 
+        String groupe;
+        groupe = groupetxt.getText();
+        
+    }
 
 }

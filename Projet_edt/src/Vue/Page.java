@@ -49,7 +49,8 @@ public class Page extends JFrame{
     
     //Top Bar
     private JPanel TopBarp0, TopBarp1;
-    private JMenuItem recap, edt, r, stat, creationSeance, maj;
+    private JMenu stat;
+    private JMenuItem recap, edt, r, creationSeance, maj, capa, camen;
     private JTextField txt;
     private String nom;
         
@@ -312,10 +313,24 @@ public class Page extends JFrame{
             
             if(droit == 1)
             {
-               stat = new JMenuItem("<html>"
+               stat = new JMenu("<html>"
                 + "<div style=\"color: green; \">"
                 + "Statistiques </div></html>");
                stat.setBackground(new Color(250, 250, 250));
+               
+               capa = new JMenuItem("<html>"
+                + "<div style=\"color: green; \">"
+                + "Capacité des salles </div></html>");
+               capa.setBackground(new Color(250, 250, 250));
+               
+               camen = new JMenuItem("<html>"
+                + "<div style=\"color: green; \">"
+                + "Répartition des matières sur l'année </div></html>");
+               camen.setBackground(new Color(250, 250, 250));
+               
+               stat.add(capa);
+               stat.addSeparator();
+               stat.add(camen);
 
                gbc.gridx = 2;
                gbc.gridy = 0;
@@ -324,12 +339,20 @@ public class Page extends JFrame{
                gbc.gridwidth = 1;
                menuBar1.add(stat, gbc); 
                
-               stat.addActionListener( new ActionListener()
+               capa.addActionListener( new ActionListener()
                 {
                     public void actionPerformed(ActionEvent e) {
-                     btnStatistiques( e );
+                     btnCapa( e );
                     }
                 });
+               
+               camen.addActionListener( new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e) {
+                     btnCamen( e );
+                    }
+                });
+               
                
                
              creationSeance = new JMenuItem("<html>"
@@ -389,9 +412,15 @@ public class Page extends JFrame{
    
     }
     
-    private void btnStatistiques( ActionEvent event)
+    private void btnCapa( ActionEvent event)
     {
-        System.out.println("EDT bouton cliqué !");
+       
+        Statistiques stat = new Statistiques(1, re);
+        stat.setVisible(true);
+    }
+    
+    private void btnCamen( ActionEvent event)
+    {
         Statistiques stat = new Statistiques(2, re);
         stat.setVisible(true);
     }

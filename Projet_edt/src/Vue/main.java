@@ -34,12 +34,7 @@ public class main {
         FirstPage fe = new FirstPage(re);
         fe.setVisible(true);
         //Form fe = new Form(re);
-        //fe.setVisible(true);
-<<<<<<< HEAD
-        
-=======
->>>>>>> master
-        
+        //fe.setVisible(true);        
 
          
     }

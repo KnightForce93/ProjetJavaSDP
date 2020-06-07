@@ -189,21 +189,21 @@ public class  Grille extends JFrame{
            
            if(obj.equals("etudiant"))
            {
-               str= re.EdtEtudiant(sem, user.getId()); 
+               str= re.EdtEtudiant(sem, name); 
                
            }
            if(obj.equals("enseignant"))
            {
-               str= re.EdtEnseignant(sem, user.getId()); 
+               str= re.EdtEnseignant(sem, name); 
            }
            if(obj.equals("salle"))
            {
-               str= re.EdtSalle(sem, user.getId()); 
+               str= re.EdtSalle(sem, name); 
                
            }
            if(obj.equals("groupe"))
            {
-               str= re.Edtgroupe(sem, user.getId()); 
+               str= re.Edtgroupe(sem, name); 
                
            }
            

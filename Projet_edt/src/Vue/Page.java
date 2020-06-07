@@ -83,8 +83,10 @@ public class Page extends JFrame{
         // mise en page des panneaux
         p0.setLayout(new GridLayout(1, 1));
         p01.setLayout(new GridLayout(1, 1));
+        //GridLayout pour semaine 
         p1.setLayout(new GridLayout(1, 50));
-       // p02.setLayout(new GridLayout(1, 13));
+       
+        //Partie nord divisée en 4 
         nord.setLayout(new GridLayout(4, 1));
         p2.setLayout(new GridLayout(1, 2));
         p3.setLayout(new GridLayout(1, 3));

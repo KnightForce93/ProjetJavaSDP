@@ -30,6 +30,7 @@ public class Form extends JFrame{
     private  JTextField semainetxt, datetxt, hdtxt, hftxt, etattxt, proftxt, salletxt, groupetxt, idtxt;
     private Recherche r;
     
+    
     /**
      * Constructeur avec 1 paramètres : re
      *
@@ -534,7 +535,12 @@ public class Form extends JFrame{
    private void btnSem ( ActionEvent event )
     { 
         String semaine;
+        
         semaine = semainetxt.getText();
+        int ident;
+        ident = Integer.parseInt(idtxt.getText());
+        r.MAJSeance(ident, "semaine", semaine);
+        
         
     }
    
@@ -542,6 +548,9 @@ public class Form extends JFrame{
     { 
         String date;
         date = datetxt.getText();
+        int ident;
+        ident = Integer.parseInt(idtxt.getText());
+        r.MAJSeance(ident, "date", date);
         
     }
    
@@ -549,6 +558,9 @@ public class Form extends JFrame{
     { 
         String h_f;
         h_f = hftxt.getText();
+        int ident;
+        ident = Integer.parseInt(idtxt.getText());
+        r.MAJSeance(ident, "heure_fin", h_f);
         
     }
    
@@ -556,6 +568,9 @@ public class Form extends JFrame{
     { 
         String h_d;
         h_d = hdtxt.getText();
+        int ident;
+        ident = Integer.parseInt(idtxt.getText());
+        r.MAJSeance(ident, "heure_debut", h_d);
         
     }
    
@@ -563,6 +578,9 @@ public class Form extends JFrame{
     { 
         String etat;
         etat = etattxt.getText();
+        int ident;
+        ident = Integer.parseInt(idtxt.getText());
+        r.MAJSeance(ident, "etat", etat);
         
     }
    
@@ -570,6 +588,9 @@ public class Form extends JFrame{
     { 
         String prof;
         prof = proftxt.getText();
+        int ident;
+        ident = Integer.parseInt(idtxt.getText());
+        r.MAJens(ident, prof, prof);
         
     }
    
@@ -577,6 +598,10 @@ public class Form extends JFrame{
     { 
         String salle;
         salle = salletxt.getText();
+        int ident;
+        ident = Integer.parseInt(idtxt.getText());
+        r.MAJsll(ident, salle, salle);
+        
         
     }
    
@@ -584,6 +609,10 @@ public class Form extends JFrame{
     { 
         String groupe;
         groupe = groupetxt.getText();
+        int ident;
+        ident = Integer.parseInt(idtxt.getText());
+        r.MAJgrp(ident, groupe, groupe);
+        
         
     }
 

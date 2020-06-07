@@ -19,15 +19,26 @@ public class Recherche {
     public Recherche(Connexion co)
     {
         this.con = co;
-    
     }
-    
+    /**
+     * Permet de se connecter
+     *
+     * @param email 
+     * @param mdp
+     * @return utilisateur
+     */
     public Utilisateur ConnexionU(String email, String mdp){
          UtilisateurDAO utilisateurdao= new UtilisateurDAO(con);
          Utilisateur utilisateur= new Utilisateur();
          utilisateur=utilisateurdao.finds(email, mdp);
          return utilisateur;
     }
+    
+    /**
+     * Permet de créer un chaine avec toutes les infos des salles
+     *
+     * @return Dsalles : données des salles dans une arraylist
+     */
     public ArrayList<String> SalleT(){
          SalleDAO salledao= new SalleDAO(con);
          Salle salle= new Salle();
@@ -42,6 +53,34 @@ public class Recherche {
          }
          return Dsalle;
     }
+    
+    /**
+     * Permet de créer un chaine avec toutes les infos des salles
+     *
+     * @return Dsalles : données des salles dans une arraylist
+     */
+    public ArrayList<String> SeanceT(){
+         SeanceDAO seancedao= new SeanceDAO(con);
+         Seance seance= new Seance();
+         String donnee;
+         ArrayList<String> Dseance=new ArrayList();
+         ArrayList<Integer> Idtype=new ArrayList();
+         Idtype=seancedao.findT();
+         for(int id: Idtype){
+           seance=seancedao.find(id);
+           donnee=""+seance.getIdT();
+           Dseance.add(donnee);
+         }
+         return Dseance;
+    }
+    
+    /**
+     * Permet d'acceder à l'edt d'un étudaint
+     *
+     * @param sem //semaine
+     * @param id 
+     * @return edt l'emploi du temps
+     */
     public ArrayList<String> EdtEtudiant(int sem, int id){
          ArrayList<String> Edt= new ArrayList<String>();
          EtudiantDAO etudiantdao= new EtudiantDAO(con);
@@ -134,6 +173,13 @@ public class Recherche {
         return Edt;
     }
     
+    /**
+     * Permet d'acceder à l'edt d'un enseignant
+     *
+     * @param sem //semaine
+     * @param id 
+     * @return Edt l'emploi du temps
+     */
      public ArrayList<String> EdtEnseignant(int sem, int id){
          ArrayList<String> Edt= new ArrayList<String>();
          Seance_enseignantDAO seance_enseignantdao= new Seance_enseignantDAO(con);
@@ -225,7 +271,14 @@ public class Recherche {
          }
         return Edt;
     }
-    
+     
+    /**
+     * Permet d'acceder à l'edt d'une salle
+     *
+     * @param sem //semaine
+     * @param id 
+     * @return edt l'emploi du temps
+     */
      public ArrayList<String> EdtSalle (int sem, int id){
          ArrayList<String> Edt= new ArrayList<String>();
          SalleDAO Salledao= new SalleDAO(con);
@@ -318,6 +371,14 @@ public class Recherche {
         return Edt;
     }
     
+     
+    /**
+     * Permet d'acceder à l'edt d'un groupe de TD
+     *
+     * @param sem //semaine
+     * @param id 
+     * @return edt l'emploi du temps
+     */
      public ArrayList<String> Edtgroupe(int sem, int id){
          ArrayList<String> Edt= new ArrayList<String>();
          

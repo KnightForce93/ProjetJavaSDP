@@ -15,7 +15,10 @@ public class Salle {
     private int capacite;
     private int id_site;
     
-    //constructeur
+    /**
+     * Constructeur par défaut
+     *
+     */
     public Salle() {
          id=0;
          nom=null;
@@ -23,6 +26,14 @@ public class Salle {
          id_site=0;
     }
     
+    /**
+     * Constructeur avec 3 paramètres : id, nom, cap et id_s
+     *
+     * @param id
+     * @param nom
+     * @param id_s
+     * @param cap
+     */
     public Salle(int id, String nom, int cap, int id_s) {
         this.id=id;
         this.nom=nom;

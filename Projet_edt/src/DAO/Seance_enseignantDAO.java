@@ -12,11 +12,17 @@ import java.util.ArrayList;
  * @author wass1
  */
 public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
-     public  Seance_enseignantDAO(Connexion conn) {
-    super(conn);
+    
+    /**
+     * Constructeur avec 1 paramètres : conn 
+     *
+     * @param conn
+     */
+    public  Seance_enseignantDAO(Connexion conn) {
+        super(conn);
   }
      /**
-     * Permet de trouver l'objet dans la BDD
+     * Méthode qui permet de trouver l'objet dans la BDD
      *
      * @param id
      * @return seance_enseignant
@@ -43,7 +49,16 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
     return seance_enseignant; 
   
   }
-   public ArrayList<Integer> findS(int id_e, int sem){    
+  
+  /**
+     * Méthode qui permet de trouver id_seance de la table dans la BDD
+     *
+     * @param id_e
+     * @param sem
+     * @return liste
+     * @throws SQLException
+     */
+  public ArrayList<Integer> findS(int id_e, int sem){    
        String requete;
        ResultSet resultat;
        ArrayList<Integer> liste;
@@ -62,8 +77,9 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
     }
     return liste; 
   }
-   /**
-     * Permet de créer une séance_enseignant lorsque l'admin le demande
+   
+  /**
+     * Méthode qui permet de créer une séance_enseignant lorsque l'admin le demande
      *
      * @param obj
      * @throws SQLException
@@ -79,11 +95,6 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
                   for(int i : idE) {
                       requete= "INSERT INTO Seance_enseignants (id_seance, id_enseignant) VALUES ('" + idS + "','" + idE.get(i) + "')";
                       resultat=this.connect.remplirChampsRequete(requete);
-                  /*
-                  if(resultat.first()){
-                      seance = new Seance(id,resultat.getInt("semaine"),resultat.getString("date"),resultat.getString("heure_debut"),resultat.getString("heure_fin"),resultat.getInt("etat"),resultat.getInt("id_cours"),resultat.getInt("id_type"));
-                  }
-                  */
                   }
                    
 
@@ -92,7 +103,22 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
               }
   }
    
-  public boolean update(Seance_enseignant obj) {
-    return false;
-  }
+    /**
+     * Méthode qui permet de mettre à jour une seance_enseignant lorsque l'admin le demande
+     *
+     * @param id_seance l'id de la séance
+     * @param valeur la valeur à attribuer
+     */
+    public void updateEns(int id_seance, int valeur) {
+    
+        String requete;
+              ResultSet resultat;
+        try {
+            requete= "UPDATE Seance_enseignants SET id_enseignant = '" + valeur + "' WHERE id_seance = '" + id_seance + "'";
+            resultat=this.connect.remplirChampsRequete(requete);
+
+        } catch (SQLException e) {
+             e.printStackTrace();
+        }
+    }
 }

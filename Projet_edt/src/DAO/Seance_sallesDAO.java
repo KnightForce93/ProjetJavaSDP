@@ -13,11 +13,17 @@ import java.util.ArrayList;
  * @author wass1
  */
 public class Seance_sallesDAO extends DAO<Seance_salles>{
-     public Seance_sallesDAO(Connexion conn) {
-    super(conn);
+    
+    /**
+     * Constructeur avec 1 paramètres : conn 
+     *
+     * @param conn
+     */
+    public Seance_sallesDAO(Connexion conn) {
+        super(conn);
   }
      /**
-     * Permet de trouver l'objet dans la BDD
+     * Méthode qui permet de trouver l'objet dans la BDD
      *
      * @param id
      * @return seance_salles
@@ -45,6 +51,14 @@ public class Seance_sallesDAO extends DAO<Seance_salles>{
     return seance_salles; 
   }
   
+  /**
+     * Méthode qui permet de trouver id_seance dans la BDD
+     *
+     * @param id_s
+     * @param sem
+     * @return liste
+     * @throws SQLException
+     */
    public ArrayList<Integer> findS(int id_s, int sem){    
        String requete;
        ResultSet resultat;
@@ -64,8 +78,9 @@ public class Seance_sallesDAO extends DAO<Seance_salles>{
     }
     return liste; 
   }
+   
    /**
-     * Permet de créer une seance_salles lorsque l'admin le demande
+     * Méthode qui permet de créer une seance_salles lorsque l'admin le demande
      *
      * @param obj
      * @throws SQLException
@@ -94,7 +109,22 @@ public class Seance_sallesDAO extends DAO<Seance_salles>{
               }
   }
    
-  public boolean update(Seance_salles obj) {
-    return false;
-  }
+   /**
+     * Méthode qui permet de mettre à jour une seance_salle lorsque l'admin le demande
+     *
+     * @param id_seance l'id de la séance
+     * @param valeur la valeur à attribuer
+     */
+    public void updateSalle(int id_seance, int valeur) {
+    
+        String requete;
+              ResultSet resultat;
+        try {
+            requete= "UPDATE Seance_salles SET id_salle = '" + valeur + "' WHERE id_seance = '" + id_seance + "'";
+            resultat=this.connect.remplirChampsRequete(requete);
+
+        } catch (SQLException e) {
+             e.printStackTrace();
+        }
+    }
 }

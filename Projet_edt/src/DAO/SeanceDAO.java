@@ -6,17 +6,24 @@
 package DAO;
 import Modele.entite.Seance;
 import java.sql.*;
+import java.util.ArrayList;
 /**
  *
  * @author wass1
  */
     public class SeanceDAO extends DAO<Seance>{
         
+        /**
+     * Constructeur avec 1 paramètres : conn 
+     *
+     * @param conn
+     */
         public SeanceDAO(Connexion conn) {
             super(conn);
         }
+        
      /**
-     * Permet de trouver l'objet dans la BDD
+     * Méthode qui permet de trouver l'objet dans la BDD
      *
      * @param id
      * @return seance
@@ -39,13 +46,40 @@ import java.sql.*;
           }
           return seance; 
         }
-  /**
-     * Permet de créer une séance lorsque l'admin le demande
+        
+    /**
+     * Méthode qui permet de trouver toutes les types de cours dans la BDD
+     *
+     * @return liste : tous les id_types des cours
+     * @throws SQLException
+     */
+    public ArrayList<Integer> findT(){    
+       String requete;
+       ResultSet resultat;
+       ArrayList<Integer> liste;
+       liste = new ArrayList<>();
+        try {
+            requete= "SELECT id_type FROM Seance ";
+            resultat=this.connect.remplirChampsRequete(requete);
+
+            while (resultat.next()) {
+
+                liste.add(resultat.getInt("id_type"));
+            }
+
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
+        return liste; 
+  }
+  
+    /**
+     * Méthode qui permet de créer une séance lorsque l'admin le demande
      *
      * @param obj
      * @throws SQLException
      */
-        public void create(Seance obj) {
+    public void create(Seance obj) {
               int id=obj.getId();
               int semaine=obj.getSem();
               String date=obj.getDate();
@@ -73,8 +107,45 @@ import java.sql.*;
 
         }
    
-  public boolean update() {
+    /**
+     * Méthode qui permet de mettre à jour une séance lorsque l'admin le demande
+     *
+     * @param id l'id de la séance
+     * @param champ le champ à modifier
+     * @param valeur la valeur à attribuer (si c'est une string)
+     */
+    public void update(int id, String champ, String valeur) {
     
-    return false;
-  }
+        String requete;
+              ResultSet resultat;
+        try {
+            requete= "UPDATE Seance SET '" + champ + "' = '" + valeur + "' WHERE id = '" + id + "'";
+            resultat=this.connect.remplirChampsRequete(requete);
+
+        } catch (SQLException e) {
+             e.printStackTrace();
+        }
+    
+    }
+    
+    /**
+     * Méthode qui permet de mettre à jour une séance lorsque l'admin le demande
+     *
+     * @param id l'id de la séance
+     * @param champ le champ à modifier
+     * @param valeur la valeur à attribuer (si c'est un integer)
+     */
+    public void update(int id, String champ, int valeur) {
+    
+        String requete;
+              ResultSet resultat;
+        try {
+            requete= "UPDATE Seance SET '" + champ + "' = '" + valeur + "' WHERE id = '" + id + "'";
+            resultat=this.connect.remplirChampsRequete(requete);
+
+        } catch (SQLException e) {
+             e.printStackTrace();
+        }
+    
+    }
 }

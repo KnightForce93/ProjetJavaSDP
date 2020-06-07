@@ -11,11 +11,17 @@ import java.sql.*;
  * @author wass1
  */
 public class SiteDAO extends DAO<Site>{
-     public SiteDAO(Connexion conn) {
-    super(conn);
+    
+    /**
+     * Constructeur avec 1 paramètres : conn 
+     *
+     * @param conn
+     */
+    public SiteDAO(Connexion conn) {
+        super(conn);
   }
      /**
-     * Permet de trouver l'objet dans la BDD
+     * Méthode qui permet de trouver l'objet dans la BDD
      *
      * @param id
      * @return site

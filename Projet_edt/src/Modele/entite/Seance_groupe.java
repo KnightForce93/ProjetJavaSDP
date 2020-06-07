@@ -15,12 +15,21 @@ public class Seance_groupe {
     private int id_seance;
     private ArrayList<Integer> id_groupe;
     
-    //constructeur
+    /**
+     * Constructeur par défaut
+     *
+     */
     public Seance_groupe() {
         id_seance=0;
         id_groupe= new ArrayList<Integer>();
     }
     
+    /**
+     * Constructeur avec 2 paramètres : id_seance et id_groupe
+     *
+     * @param id_seance
+     * @param id_groupe
+     */
     public Seance_groupe(int id_seance, ArrayList<Integer> id_groupe) {
         this.id_seance=id_seance;
         this.id_groupe=id_groupe;

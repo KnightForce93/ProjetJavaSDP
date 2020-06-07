@@ -11,11 +11,17 @@ import java.sql.*;
  * @author wass1
  */
 public class Type_coursDAO extends DAO<Type_cours>{
-     public Type_coursDAO(Connexion conn) {
+    
+    /**
+     * Constructeur avec 1 paramètres : conn 
+     *
+     * @param conn
+     */
+    public Type_coursDAO(Connexion conn) {
     super(conn);
   }
      /**
-     * Permet de trouver l'objet dans la BDD
+     * Méthode qui permet de trouver l'objet dans la BDD
      *
      * @param id
      * @return type_cours

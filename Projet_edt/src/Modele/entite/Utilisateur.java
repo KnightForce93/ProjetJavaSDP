@@ -17,7 +17,10 @@ public class Utilisateur {
     private String prenom;
     private int droit;
     
-    //constructeurs
+    /**
+     * Constructeur par défaut
+     *
+     */
     public Utilisateur() {
         id=0;
         email=null;
@@ -26,6 +29,17 @@ public class Utilisateur {
         prenom=null;
         droit=0;
     }
+    
+    /**
+     * Constructeur avec 6 paramètres : id, email, password, nom, prenom et droit
+     *
+     * @param id
+     * @param email
+     * @param password
+     * @param nom
+     * @param prenom
+     * @param droit
+     */
     public Utilisateur(int id, String email, String password, String nom,String prenom, int droit) {
         this.id=id;
         this.email=email;

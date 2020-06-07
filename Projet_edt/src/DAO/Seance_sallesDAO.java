@@ -110,12 +110,21 @@ public class Seance_sallesDAO extends DAO<Seance_salles>{
   }
    
    /**
-     * Méthode qui permet de mettre à jour une seance_salles lorsque l'admin le demande
+     * Méthode qui permet de mettre à jour une seance_salle lorsque l'admin le demande
      *
-     * @param obj
-     * @throws SQLException
+     * @param id_seance l'id de la séance
+     * @param valeur la valeur à attribuer
      */
-  public boolean update(Seance_salles obj) {
-    return false;
-  }
+    public void updateSalle(int id_seance, int valeur) {
+    
+        String requete;
+              ResultSet resultat;
+        try {
+            requete= "UPDATE Seance_salles SET id_salle = '" + valeur + "' WHERE id_seance = '" + id_seance + "'";
+            resultat=this.connect.remplirChampsRequete(requete);
+
+        } catch (SQLException e) {
+             e.printStackTrace();
+        }
+    }
 }

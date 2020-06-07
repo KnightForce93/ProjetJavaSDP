@@ -46,7 +46,7 @@ public class SalleDAO extends DAO<Salle>{
     return salle; 
   }
   /**
-     * Permet de trouver toutes les salles dans la BDD
+     * Méthode qui permet de trouver toutes les salles dans la BDD
      *
      * @return liste : tous les id des salles
      * @throws SQLException

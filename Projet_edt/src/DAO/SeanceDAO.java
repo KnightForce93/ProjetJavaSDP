@@ -47,7 +47,7 @@ import java.util.ArrayList;
           return seance; 
         }
         
-        /**
+    /**
      * Méthode qui permet de trouver toutes les types de cours dans la BDD
      *
      * @return liste : tous les id_types des cours
@@ -79,7 +79,7 @@ import java.util.ArrayList;
      * @param obj
      * @throws SQLException
      */
-        public void create(Seance obj) {
+    public void create(Seance obj) {
               int id=obj.getId();
               int semaine=obj.getSem();
               String date=obj.getDate();
@@ -107,14 +107,45 @@ import java.util.ArrayList;
 
         }
    
-        /**
+    /**
      * Méthode qui permet de mettre à jour une séance lorsque l'admin le demande
      *
-     * 
-     * 
+     * @param id l'id de la séance
+     * @param champ le champ à modifier
+     * @param valeur la valeur à attribuer (si c'est une string)
      */
-  public boolean update() {
+    public void update(int id, String champ, String valeur) {
     
-    return false;
-  }
+        String requete;
+              ResultSet resultat;
+        try {
+            requete= "UPDATE Seance SET '" + champ + "' = '" + valeur + "' WHERE id = '" + id + "'";
+            resultat=this.connect.remplirChampsRequete(requete);
+
+        } catch (SQLException e) {
+             e.printStackTrace();
+        }
+    
+    }
+    
+    /**
+     * Méthode qui permet de mettre à jour une séance lorsque l'admin le demande
+     *
+     * @param id l'id de la séance
+     * @param champ le champ à modifier
+     * @param valeur la valeur à attribuer (si c'est un integer)
+     */
+    public void update(int id, String champ, int valeur) {
+    
+        String requete;
+              ResultSet resultat;
+        try {
+            requete= "UPDATE Seance SET '" + champ + "' = '" + valeur + "' WHERE id = '" + id + "'";
+            resultat=this.connect.remplirChampsRequete(requete);
+
+        } catch (SQLException e) {
+             e.printStackTrace();
+        }
+    
+    }
 }

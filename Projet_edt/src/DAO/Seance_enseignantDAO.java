@@ -95,11 +95,6 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
                   for(int i : idE) {
                       requete= "INSERT INTO Seance_enseignants (id_seance, id_enseignant) VALUES ('" + idS + "','" + idE.get(i) + "')";
                       resultat=this.connect.remplirChampsRequete(requete);
-                  /*
-                  if(resultat.first()){
-                      seance = new Seance(id,resultat.getInt("semaine"),resultat.getString("date"),resultat.getString("heure_debut"),resultat.getString("heure_fin"),resultat.getInt("etat"),resultat.getInt("id_cours"),resultat.getInt("id_type"));
-                  }
-                  */
                   }
                    
 
@@ -109,12 +104,21 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
   }
    
     /**
-     * Méthode qui permet de mettre à jour une séance_enseignant lorsque l'admin le demande
+     * Méthode qui permet de mettre à jour une seance_enseignant lorsque l'admin le demande
      *
-     * @param obj
-     *
+     * @param id_seance l'id de la séance
+     * @param valeur la valeur à attribuer
      */
-  public boolean update(Seance_enseignant obj) {
-    return false;
-  }
+    public void updateEns(int id_seance, int valeur) {
+    
+        String requete;
+              ResultSet resultat;
+        try {
+            requete= "UPDATE Seance_enseignants SET id_enseignant = '" + valeur + "' WHERE id_seance = '" + id_seance + "'";
+            resultat=this.connect.remplirChampsRequete(requete);
+
+        } catch (SQLException e) {
+             e.printStackTrace();
+        }
+    }
 }

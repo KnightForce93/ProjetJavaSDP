@@ -110,12 +110,21 @@ public class Seance_groupeDAO extends DAO<Seance_groupe>{
   }
    
     /**
-     * Méthode qui permet de mettre à jour une séance_groupes lorsque l'admin le demande
+     * Méthode qui permet de mettre à jour une seance_groupe lorsque l'admin le demande
      *
-     * @param obj
-     * @throws SQLException
+     * @param id_seance l'id de la séance
+     * @param valeur la valeur à attribuer
      */
-  public boolean update(Seance_groupe obj) {
-    return false;
-  }
+    public void updateGrp(int id_seance, int valeur) {
+    
+        String requete;
+              ResultSet resultat;
+        try {
+            requete= "UPDATE Seance_groupes SET id_groupe = '" + valeur + "' WHERE id_seance = '" + id_seance + "'";
+            resultat=this.connect.remplirChampsRequete(requete);
+
+        } catch (SQLException e) {
+             e.printStackTrace();
+        }
+    }
 }

@@ -62,12 +62,9 @@ public class  Grille extends JFrame{
         createHours(top);
 
         createDay(left);
-
-
         createCentre();
-     
         
-        
+
         
         content.add(top, BorderLayout.NORTH);
         content.add(left, BorderLayout.WEST);
@@ -82,7 +79,6 @@ public class  Grille extends JFrame{
         createCentre();
         center.revalidate();
         center.repaint();
-        //createCentre();
     }
      
     public void createDay(JPanel left)
@@ -175,11 +171,22 @@ public class  Grille extends JFrame{
     
     public void createCentre()
     {   
+        int droit = user.getDroit();
+        ArrayList<String> str = new ArrayList<String>();
         JPanel cell[][]= new JPanel[6][13];
         int sem = Integer.parseInt(this.semaine);
         System.out.println(sem);
         
-        ArrayList<String> str= re.EdtEtudiant(sem, user.getId());
+        //Etudiant
+        if(droit == 4)
+        {
+           str= re.EdtEtudiant(sem, user.getId()); 
+        }
+        //Enseignant
+        else if(droit == 3)
+        {
+           str= re.EdtEnseignant(sem, user.getId());  
+        }
        
         Border blackline = BorderFactory.createLineBorder(Color.black);
         

@@ -41,7 +41,7 @@ public class Statistiques extends JFrame{
     }); 
     panel = new JPanel(new BorderLayout()); 
     setContentPane(panel); 
-    setSize(600, 350); 
+    setSize(500, 350); 
     
     if(choix==1) {
            
@@ -49,12 +49,6 @@ public class Statistiques extends JFrame{
             DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
 
             int nbplaces=0;
-            int e1=0;
-            int e2=0;
-            int e3=0;
-            int e4=0;
-            int e5=0;
-            
 
             for(String s:str){
 
@@ -67,41 +61,50 @@ public class Statistiques extends JFrame{
 
                    if(id_site.equals("1")) {
                       nom_site="E1";
-                      e1+=capacite;
-                      
                    } 
                    if(id_site.equals("2")) {
                       nom_site="E2";
-                      e2+=capacite;
                    } 
                    if(id_site.equals("3")) {
                       nom_site="E3";
-                      e3+=capacite;
                    } 
                    if(id_site.equals("4")) {
                       nom_site="E4";
-                      e4+=capacite;
-                      
                    } 
                    if(id_site.equals("5")) {
                       nom_site="E5";
-                      e5+=capacite;
                    }
 
                    dataset.addValue(capacite, nom, nom_site);
                    nbplaces+=capacite;
             }
 
-            JFreeChart statBAR = ChartFactory.createBarChart("Capacité des salles","E1 : " + e1 + " / E2 : " + e2 + " / E3 : " + e3 + " / E4 : " + e4 + " / E5 : " + e5 + " / Total : " + nbplaces + " places","Nombre de places", dataset, PlotOrientation.VERTICAL, true, true, false); 
-            ChartPanel statPanel = new ChartPanel(statBAR);
+            JFreeChart statBAR = ChartFactory.createBarChart("Capacité des salles", "Total : " + nbplaces + " places","Nombre de places", dataset, PlotOrientation.VERTICAL, true, true, false); 
+            ChartPanel statPanel = new ChartPanel(statBAR); 
             panel.add(statPanel); 
-                        
-           // JLabel label = new JLabel("E1 : " + e1 + " / E2 : " + e2 + " / E3 : " + e3 + " / E4 : " + e4 + " / E5 : " + e5);
-            // panel.add(label);
     }
     if(choix==2) {
             
-            ArrayList<String> str= r.SeanceT(); 
+            ArrayList<String> str= new ArrayList();
+            String n = "1";
+            str.add(n);
+            n = "1";
+            str.add(n);
+            n = "3";
+            str.add(n);
+            n = "2";
+            str.add(n);
+            n = "4";
+            str.add(n);
+            n = "6";
+            str.add(n);
+            n = "6";
+            str.add(n);
+            n = "5";
+            str.add(n);
+            n = "2";
+            str.add(n);
+            
             DefaultPieDataset dataset = new DefaultPieDataset(); 
             
             int cm=0;
@@ -147,12 +150,10 @@ public class Statistiques extends JFrame{
             dataset.setValue("Examen " + examen*100/nb + "%", new Integer(examen)); 
             
 
-            JFreeChart statCAMEM = ChartFactory.createPieChart("Répartition des types de cours sur l'année", dataset, true, true, true); 
+            JFreeChart statCAMEM = ChartFactory.createPieChart("Répartition des matières sur l'année", dataset, true, true, true); 
             ChartPanel statPanel = new ChartPanel(statCAMEM); 
             panel.add(statPanel); 
-
     }
-    
     
   } 
 
@@ -160,7 +161,7 @@ public class Statistiques extends JFrame{
      String nameDatabase = "projetjava";
         String loginDatabase = "root"; 
         //pour mac
-        String passwordDatabase = "root";
+        String passwordDatabase = "";
         
         Connexion co = new Connexion(nameDatabase,loginDatabase, passwordDatabase);
         Recherche re= new Recherche(co);

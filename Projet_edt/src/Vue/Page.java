@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -40,6 +41,7 @@ public class Page extends JFrame{
     private Recherche re;
     private String semaine = "10";
     private Grille g;
+    private ArrayList<String> tpnom;
    
     
     public Page(Utilisateur u, Recherche r)
@@ -77,8 +79,9 @@ public class Page extends JFrame{
         
          // ajout des objets graphqiues dans les panneaux
          //p0.setBackground(new Color(81, 133, 169));
-        TopBar tp = new TopBar(p0, p01);
-      
+        TopBar tp = new TopBar(p0, p01, user);
+        
+        //ArrayList<String> tpnom = tp.getNom(); 
         
         creationSemaines(p1);
         creationMois(p02);

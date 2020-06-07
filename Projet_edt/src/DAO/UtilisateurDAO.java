@@ -81,5 +81,6 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
       e.printStackTrace();
     }
     return utilisateur; 
+    //ljf
   }
 }

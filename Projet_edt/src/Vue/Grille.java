@@ -34,24 +34,26 @@ import javax.swing.border.Border;
  */
 public class  Grille extends JFrame{
     
-    private JPanel top, left, center, seance;
+    private JPanel top, left, center;
     private JButton btn1, btn2;
     private Utilisateur user;
     private Recherche re;
+    private String semaine;
 
     
-    public Grille(JPanel content, Utilisateur u, Recherche r)
+    public Grille(JPanel content, Utilisateur u, Recherche r, String semaine)
     {
         content.setLayout(new BorderLayout());
         
         user = u;
         re = r;
+        this.semaine = semaine;
         //panneaux
         top = new JPanel();
         left = new JPanel();
         center = new JPanel();
 
-        seance = new JPanel();
+      
         
         //boutons
         btn1 = new JButton("test1");
@@ -62,7 +64,7 @@ public class  Grille extends JFrame{
         createDay(left);
 
 
-        createCentre(center);
+        createCentre();
      
         
         
@@ -73,8 +75,17 @@ public class  Grille extends JFrame{
         
       
     }
+    
+    public void paint()
+    {
+        center.removeAll();
+        createCentre();
+        center.revalidate();
+        center.repaint();
+        //createCentre();
+    }
      
-    private void createDay(JPanel left)
+    public void createDay(JPanel left)
     {
         JLabel cell1 = new JLabel("<html><div style=\" "
                 + "color: white; text-align: center;  padding: 5px;\">\n" +
@@ -159,19 +170,23 @@ public class  Grille extends JFrame{
         
     }
     
-    private void createCentre(JPanel centre)
+   
+   
+    
+    public void createCentre()
     {   
         JPanel cell[][]= new JPanel[6][13];
-
+        int sem = Integer.parseInt(this.semaine);
+        System.out.println(sem);
         
-        ArrayList<String> str= re.EdtEtudiant(10, user.getId());
+        ArrayList<String> str= re.EdtEtudiant(sem, user.getId());
        
         Border blackline = BorderFactory.createLineBorder(Color.black);
         
-        centre.setBackground(Color.WHITE);
+        this.center.setBackground(Color.WHITE);
 
         //On définit le layout manager
-        centre.setLayout(new GridBagLayout());
+        this.center.setLayout(new GridBagLayout());
 
         //L'objet servant à positionner les composants
         GridBagConstraints gbc = new GridBagConstraints();
@@ -199,7 +214,7 @@ public class  Grille extends JFrame{
                     
                     createSeance(i,j, cell[i][j],str);
 
-                    centre.add(cell[i][j], gbc);
+                    this.center.add(cell[i][j], gbc);
 
                 }
                 
@@ -218,7 +233,7 @@ public class  Grille extends JFrame{
                     //La taille en hauteur et en largeur
                     gbc.gridheight = 1;
                     gbc.gridwidth = 1;
-                    centre.add(cell[i][j], gbc);
+                    this.center.add(cell[i][j], gbc);
 
                 }
 
@@ -230,7 +245,7 @@ public class  Grille extends JFrame{
     }
     
 
-    private void createSeance(int i, int j, JPanel c, ArrayList<String> str)
+    public void createSeance(int i, int j, JPanel c, ArrayList<String> str)
     { 
         JPanel cell[][] = new JPanel[6][13];
         HashMap<String, Integer> table = new HashMap<String, Integer>();
@@ -300,7 +315,7 @@ public class  Grille extends JFrame{
     
     
 
-    private void createHours(JPanel top)
+    public void createHours(JPanel top)
     {
         JLabel cell[]= new JLabel[16];
         

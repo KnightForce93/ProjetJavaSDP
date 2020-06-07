@@ -26,7 +26,7 @@ public class main {
         String nameDatabase = "projetjava";
         String loginDatabase = "root"; 
         //pour mac
-        String passwordDatabase = "";
+        String passwordDatabase = "root";
         
         Connexion co = new Connexion(nameDatabase,loginDatabase, passwordDatabase);
         Recherche re= new Recherche(co);

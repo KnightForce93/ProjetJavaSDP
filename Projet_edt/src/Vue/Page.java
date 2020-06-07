@@ -14,6 +14,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.SQLException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -33,7 +38,9 @@ public class Page extends JFrame{
     private JLabel t0, t1, tnord, t2,t3, ht;
     private Utilisateur user;
     private Recherche re;
-
+    private String semaine = "10";
+    private Grille g;
+   
     
     public Page(Utilisateur u, Recherche r)
     {
@@ -73,15 +80,10 @@ public class Page extends JFrame{
         TopBar tp = new TopBar(p0, p01);
       
         
-        
-        
-        
-        //p1.add(t1);
         creationSemaines(p1);
         creationMois(p02);
         
-        //creationGrille(p2);
-        Grille g = new Grille(p2, user, re);
+        g = new Grille(p2, user, re, semaine);
         
         //On ajout les deux panels p0 et p1 au Nord
         nord.add("North", p0);
@@ -99,32 +101,46 @@ public class Page extends JFrame{
         
     }
     
-    public static void creationSemaines(JPanel contentGrille)
+    public void creationSemaines(JPanel contentGrille)
     {
-        JPanel cell[][] =new JPanel[50][2];
-        Border blackline = BorderFactory.createLineBorder(Color.black);
-        JLabel num[] = new JLabel[50];
-
         
+        JButton cell[][]= new JButton[50][2];
+   
         for(int i=0; i<50; i++){
-                
-                cell[i][1]= new JPanel();
-                cell[i][1].setSize(new Dimension(10, 10));
-                
+           
                 if(i<22)
                 {
-                  num[i] = new JLabel(""+(i+31));  
+                  
+                    cell[i][1]= new JButton(""+(i+31));
+                    cell[i][1].setSize(new Dimension(10, 10));
+                    
+                    
+                    cell[i][1].addActionListener( new ActionListener()
+                    {
+                        public void actionPerformed(ActionEvent e) {
+                            retrouveSem( e );
+                        }
+                    });  
+
+              
+
                 }
                 else
                 {
-                 num[i] = new JLabel(""+(i-21));  
+             
+                    cell[i][1]= new JButton(""+(i-21));
+                    cell[i][1].setSize(new Dimension(10, 10)); 
+                    
+                    cell[i][1].addActionListener( new ActionListener()
+                    {
+                        public void actionPerformed(ActionEvent e) {
+                            retrouveSem( e );
+                        }
+                    });  
                 }
                 
-                
                 cell[i][1].setBackground(new Color(230, 229, 228));
-                cell[i][1].setBorder(blackline);
-                
-                cell[i][1].add(num[i]);
+
                 contentGrille.add(cell[i][1]);
                 
                     
@@ -132,6 +148,19 @@ public class Page extends JFrame{
             }
         
     }
+   
+    public void retrouveSem(ActionEvent e) {
+
+// Affichage du texte du bouton dans le JLabel lorsque le bouton est cliqué
+// on peux très bien faire autre chose que ça
+      this.semaine =  ((JButton)e.getSource()).getText(); 
+      g = new Grille(p2, user, re, this.semaine);
+      g.paint();
+        
+    }
+   
+    
+    
     
     public static void creationMois(JPanel ligne)
     {

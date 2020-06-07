@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -194,11 +195,18 @@ public class TopBar extends JFrame{
         JTextField txt = new JTextField("recherche...");
         txt.setPreferredSize(new Dimension(120, 30));
         
+        String name = new String ("Thomas POPIELSKI");
         
-        //Ajout des menus à la page 
+        JLabel nom = new JLabel(name);
+        nom.setPreferredSize(new Dimension (120, 30));
+        
+        
+        //Ajout des menus à la page
+        menuBar.add(nom);
         menuBar.add(menuCours);
         menuBar.add(menuVS);
         menuBar.add(txt);
+       
         
         
         

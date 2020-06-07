@@ -367,6 +367,15 @@ public class Page extends JFrame{
                gbc.gridwidth = 1;
                menuBar1.add(creationSeance, gbc);
                
+               creationSeance.addActionListener( new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e) {
+                     btnCreaSeance( e );
+                    }
+                });
+               
+               
+               
                maj = new JMenuItem("<html>"
                 + "<div style=\"color: green; \">"
                 + "Mise à jour </div></html>");
@@ -423,6 +432,12 @@ public class Page extends JFrame{
     {
         Statistiques stat = new Statistiques(2, re);
         stat.setVisible(true);
+    }
+    
+    private void btnCreaSeance( ActionEvent event)
+    {
+        Form f = new Form(re);
+        f.setVisible(true);
     }
  
     

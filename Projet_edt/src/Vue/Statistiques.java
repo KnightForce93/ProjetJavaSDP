@@ -85,25 +85,7 @@ public class Statistiques extends JFrame{
     }
     if(choix==2) {
             
-            ArrayList<String> str= new ArrayList();
-            String n = "1";
-            str.add(n);
-            n = "1";
-            str.add(n);
-            n = "3";
-            str.add(n);
-            n = "2";
-            str.add(n);
-            n = "4";
-            str.add(n);
-            n = "6";
-            str.add(n);
-            n = "6";
-            str.add(n);
-            n = "5";
-            str.add(n);
-            n = "2";
-            str.add(n);
+            ArrayList<String> str= r.SeanceT();
             
             DefaultPieDataset dataset = new DefaultPieDataset(); 
             
@@ -161,7 +143,7 @@ public class Statistiques extends JFrame{
      String nameDatabase = "projetjava";
         String loginDatabase = "root"; 
         //pour mac
-        String passwordDatabase = "";
+        String passwordDatabase = "root";
         
         Connexion co = new Connexion(nameDatabase,loginDatabase, passwordDatabase);
         Recherche re= new Recherche(co);

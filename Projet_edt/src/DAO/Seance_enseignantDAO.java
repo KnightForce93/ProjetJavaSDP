@@ -12,11 +12,17 @@ import java.util.ArrayList;
  * @author wass1
  */
 public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
-     public  Seance_enseignantDAO(Connexion conn) {
-    super(conn);
+    
+    /**
+     * Constructeur avec 1 paramètres : conn 
+     *
+     * @param conn
+     */
+    public  Seance_enseignantDAO(Connexion conn) {
+        super(conn);
   }
      /**
-     * Permet de trouver l'objet dans la BDD
+     * Méthode qui permet de trouver l'objet dans la BDD
      *
      * @param id
      * @return seance_enseignant
@@ -43,7 +49,16 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
     return seance_enseignant; 
   
   }
-   public ArrayList<Integer> findS(int id_e, int sem){    
+  
+  /**
+     * Méthode qui permet de trouver id_seance de la table dans la BDD
+     *
+     * @param id_e
+     * @param sem
+     * @return liste
+     * @throws SQLException
+     */
+  public ArrayList<Integer> findS(int id_e, int sem){    
        String requete;
        ResultSet resultat;
        ArrayList<Integer> liste;
@@ -62,8 +77,9 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
     }
     return liste; 
   }
-   /**
-     * Permet de créer une séance_enseignant lorsque l'admin le demande
+   
+  /**
+     * Méthode qui permet de créer une séance_enseignant lorsque l'admin le demande
      *
      * @param obj
      * @throws SQLException
@@ -92,6 +108,12 @@ public class Seance_enseignantDAO extends DAO< Seance_enseignant>{
               }
   }
    
+    /**
+     * Méthode qui permet de mettre à jour une séance_enseignant lorsque l'admin le demande
+     *
+     * @param obj
+     *
+     */
   public boolean update(Seance_enseignant obj) {
     return false;
   }

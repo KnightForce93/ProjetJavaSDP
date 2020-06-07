@@ -6,17 +6,24 @@
 package DAO;
 import Modele.entite.Seance;
 import java.sql.*;
+import java.util.ArrayList;
 /**
  *
  * @author wass1
  */
     public class SeanceDAO extends DAO<Seance>{
         
+        /**
+     * Constructeur avec 1 paramètres : conn 
+     *
+     * @param conn
+     */
         public SeanceDAO(Connexion conn) {
             super(conn);
         }
+        
      /**
-     * Permet de trouver l'objet dans la BDD
+     * Méthode qui permet de trouver l'objet dans la BDD
      *
      * @param id
      * @return seance
@@ -39,8 +46,35 @@ import java.sql.*;
           }
           return seance; 
         }
-  /**
-     * Permet de créer une séance lorsque l'admin le demande
+        
+        /**
+     * Méthode qui permet de trouver toutes les types de cours dans la BDD
+     *
+     * @return liste : tous les id_types des cours
+     * @throws SQLException
+     */
+    public ArrayList<Integer> findT(){    
+       String requete;
+       ResultSet resultat;
+       ArrayList<Integer> liste;
+       liste = new ArrayList<>();
+        try {
+            requete= "SELECT id_type FROM Seance ";
+            resultat=this.connect.remplirChampsRequete(requete);
+
+            while (resultat.next()) {
+
+                liste.add(resultat.getInt("id_type"));
+            }
+
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
+        return liste; 
+  }
+  
+    /**
+     * Méthode qui permet de créer une séance lorsque l'admin le demande
      *
      * @param obj
      * @throws SQLException
@@ -73,6 +107,12 @@ import java.sql.*;
 
         }
    
+        /**
+     * Méthode qui permet de mettre à jour une séance lorsque l'admin le demande
+     *
+     * 
+     * 
+     */
   public boolean update() {
     
     return false;

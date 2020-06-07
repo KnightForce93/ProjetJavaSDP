@@ -13,11 +13,17 @@ import java.sql.*;
  * @author wass1
  */
 public class Seance_groupeDAO extends DAO<Seance_groupe>{
-     public Seance_groupeDAO(Connexion conn) {
-    super(conn);
+    
+    /**
+     * Constructeur avec 1 paramètres : conn 
+     *
+     * @param conn
+     */
+    public Seance_groupeDAO(Connexion conn) {
+        super(conn);
   }
      /**
-     * Permet de trouver l'objet dans la BDD
+     * Méthode qui permet de trouver l'objet dans la BDD
      *
      * @param id
      * @return seance_groupe
@@ -46,6 +52,14 @@ public class Seance_groupeDAO extends DAO<Seance_groupe>{
     return seance_groupe; 
   }
   
+  /**
+     * Méthode qui permet de trouver l'id_seance de la table dans la BDD
+     *
+     * @param id_g 
+     * @param sem
+     * @return liste
+     * @throws SQLException
+     */
   public ArrayList<Integer> findS(int id_g, int sem){    
        String requete;
        ResultSet resultat;
@@ -66,7 +80,7 @@ public class Seance_groupeDAO extends DAO<Seance_groupe>{
     return liste; 
   }
   /**
-     * Permet de créer une séance_groupes lorsque l'admin le demande
+     * Méthode qui permet de créer une séance_groupes lorsque l'admin le demande
      *
      * @param obj
      * @throws SQLException
@@ -95,6 +109,12 @@ public class Seance_groupeDAO extends DAO<Seance_groupe>{
               }
   }
    
+    /**
+     * Méthode qui permet de mettre à jour une séance_groupes lorsque l'admin le demande
+     *
+     * @param obj
+     * @throws SQLException
+     */
   public boolean update(Seance_groupe obj) {
     return false;
   }

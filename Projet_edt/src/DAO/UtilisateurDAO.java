@@ -11,11 +11,17 @@ import java.sql.*;
  * @author wass1
  */
 public class UtilisateurDAO extends DAO<Utilisateur>{
-     public UtilisateurDAO(Connexion conn) {
-    super(conn);
+    
+    /**
+     * Constructeur avec 1 paramètres : conn 
+     *
+     * @param conn
+     */
+    public UtilisateurDAO(Connexion conn) {
+        super(conn);
   }
      /**
-     * Permet de trouver l'objet dans la BDD
+     * Méthode qui permet de trouver l'objet dans la BDD
      *
      * @param id
      * @return utilisateur

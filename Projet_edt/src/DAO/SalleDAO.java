@@ -12,11 +12,17 @@ import java.util.ArrayList;
  * @author wass1
  */
 public class SalleDAO extends DAO<Salle>{
-     public SalleDAO(Connexion conn) {
-    super(conn);
+    
+    /**
+     * Constructeur avec 1 paramètres : conn 
+     *
+     * @param conn
+     */
+    public SalleDAO(Connexion conn) {
+        super(conn);
   }
      /**
-     * Permet de trouver l'objet dans la BDD
+     * Méthode qui permet de trouver l'objet dans la BDD
      *
      * @param id
      * @return salle
@@ -39,7 +45,12 @@ public class SalleDAO extends DAO<Salle>{
     }
     return salle; 
   }
-  
+  /**
+     * Permet de trouver toutes les salles dans la BDD
+     *
+     * @return liste : tous les id des salles
+     * @throws SQLException
+     */
   public ArrayList<Integer> findAll(){    
        String requete;
        ResultSet resultat;
